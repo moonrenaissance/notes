@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Projects\\Notes-App\\API\\Web-API\\Web-API\\Web-API.csproj": {}
+    "D:\\Dev\\practise\\notes\\API\\Web-API\\Web-API\\Web-API.csproj": {}
   },
   "projects": {
-    "E:\\Projects\\Notes-App\\API\\Web-API\\Web-API\\Web-API.csproj": {
+    "D:\\Dev\\practise\\notes\\API\\Web-API\\Web-API\\Web-API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Projects\\Notes-App\\API\\Web-API\\Web-API\\Web-API.csproj",
+        "projectUniqueName": "D:\\Dev\\practise\\notes\\API\\Web-API\\Web-API\\Web-API.csproj",
         "projectName": "Web-API",
-        "projectPath": "E:\\Projects\\Notes-App\\API\\Web-API\\Web-API\\Web-API.csproj",
-        "packagesPath": "C:\\Users\\Zver\\.nuget\\packages\\",
-        "outputPath": "E:\\Projects\\Notes-App\\API\\Web-API\\Web-API\\obj\\",
+        "projectPath": "D:\\Dev\\practise\\notes\\API\\Web-API\\Web-API\\Web-API.csproj",
+        "packagesPath": "C:\\Users\\Егор\\.nuget\\packages\\",
+        "outputPath": "D:\\Dev\\practise\\notes\\API\\Web-API\\Web-API\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "E:\\Microsoft Visual Studio\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Zver\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Егор\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -43,46 +39,17 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "dependencies": {
-            "Microsoft.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[7.0.8, )"
-            },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[7.0.8, )"
-            },
-            "Microsoft.EntityFrameworkCore.Tools": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[7.0.8, )"
-            },
-            "Swashbuckle.AspNetCore": {
-              "target": "Package",
-              "version": "[6.2.3, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
