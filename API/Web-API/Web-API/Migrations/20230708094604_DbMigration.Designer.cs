@@ -12,8 +12,8 @@ using Web_API.Controllers;
 namespace Web_API.Migrations
 {
     [DbContext(typeof(FullStackDbContext))]
-    [Migration("20230708080136_First Migration")]
-    partial class FirstMigration
+    [Migration("20230708094604_DbMigration")]
+    partial class DbMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,21 @@ namespace Web_API.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("NotesTags", b =>
+                {
+                    b.Property<int>("NotesId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TagsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("NotesId", "TagsId");
+
+                    b.HasIndex("TagsId");
+
+                    b.ToTable("NotesTags");
+                });
 
             modelBuilder.Entity("Web_API.Controllers.Notes", b =>
                 {
@@ -66,23 +81,19 @@ namespace Web_API.Migrations
                     b.ToTable("Tags");
                 });
 
-            modelBuilder.Entity("Web_API.Controllers.TagsAdd", b =>
+            modelBuilder.Entity("NotesTags", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.HasOne("Web_API.Controllers.Notes", null)
+                        .WithMany()
+                        .HasForeignKey("NotesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("IdNotes")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdTags")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TagsAdd");
+                    b.HasOne("Web_API.Controllers.Tags", null)
+                        .WithMany()
+                        .HasForeignKey("TagsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

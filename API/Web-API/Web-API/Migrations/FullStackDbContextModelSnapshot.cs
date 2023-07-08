@@ -22,6 +22,21 @@ namespace Web_API.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("NotesTags", b =>
+                {
+                    b.Property<int>("NotesId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TagsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("NotesId", "TagsId");
+
+                    b.HasIndex("TagsId");
+
+                    b.ToTable("NotesTags");
+                });
+
             modelBuilder.Entity("Web_API.Controllers.Notes", b =>
                 {
                     b.Property<int>("Id")
@@ -63,23 +78,19 @@ namespace Web_API.Migrations
                     b.ToTable("Tags");
                 });
 
-            modelBuilder.Entity("Web_API.Controllers.TagsAdd", b =>
+            modelBuilder.Entity("NotesTags", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.HasOne("Web_API.Controllers.Notes", null)
+                        .WithMany()
+                        .HasForeignKey("NotesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("IdNotes")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdTags")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TagsAdd");
+                    b.HasOne("Web_API.Controllers.Tags", null)
+                        .WithMany()
+                        .HasForeignKey("TagsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
