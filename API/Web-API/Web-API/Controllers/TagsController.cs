@@ -34,5 +34,56 @@ namespace Web_API.Controllers
 
       return Ok(tagsRequest);
     }
+
+    [HttpGet]
+    [Route("{id:Guid}")]
+    public async Task<IActionResult> GetTag([FromRoute] Guid id)
+    {
+      var tag = await _fullStackDbContext.Tags.FirstOrDefaultAsync(x => x.Id == id);
+
+      if (tag == null)
+      {
+        return NotFound();
+      }
+
+      return Ok(tag);
+    }
+
+    [HttpPut]
+    [Route("{id:Guid}")]
+    public async Task<IActionResult> UpdateTag([FromRoute] Guid id, Tags updateTagRequest)
+    {
+      var tag = await _fullStackDbContext.Tags.FindAsync(id);
+
+      if (tag == null)
+      {
+        return NotFound();
+      }
+
+      tag.Title = updateTagRequest.Title;
+      tag.Color = updateTagRequest.Color;
+      tag.Notes = updateTagRequest.Notes;
+
+    await _fullStackDbContext.SaveChangesAsync();
+
+      return Ok(tag);
+    }
+
+    [HttpDelete]
+    [Route("{id:Guid}")]
+    public async Task<IActionResult> DeleteTag([FromRoute] Guid id)
+    {
+      var tag = await _fullStackDbContext.Tags.FindAsync(id);
+
+      if (tag == null)
+      {
+        return NotFound();
+      }
+
+      _fullStackDbContext.Tags.Remove(tag);
+      await _fullStackDbContext.SaveChangesAsync();
+
+      return Ok(tag);
+    }
   }
 }

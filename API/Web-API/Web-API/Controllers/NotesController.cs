@@ -34,5 +34,57 @@ namespace Web_API.Controllers
 
       return Ok(notesRequest);
     }
+
+    [HttpGet]
+    [Route("{id:Guid}")]
+    public async Task<IActionResult> GetNote([FromRoute] Guid id)
+    {
+      var note = await _fullStackDbContext.Notes.FirstOrDefaultAsync(x => x.Id == id);
+
+      if(note == null)
+      {
+        return NotFound();
+      }
+
+      return Ok(note);
+    }
+
+    [HttpPut]
+    [Route("{id:Guid}")]
+    public async Task<IActionResult> UpdateNote([FromRoute] Guid id, Notes updateNoteRequest)
+    {
+      var note = await _fullStackDbContext.Notes.FindAsync(id);
+
+      if (note == null)
+      {
+        return NotFound();
+      }
+
+      note.Title = updateNoteRequest.Title;
+      note.Description = updateNoteRequest.Description;
+      note.Date = updateNoteRequest.Date;
+      note.Tags = updateNoteRequest.Tags;
+
+      await _fullStackDbContext.SaveChangesAsync();
+
+      return Ok(note);
+    }
+
+    [HttpDelete]
+    [Route("{id:Guid}")]
+    public async Task<IActionResult> DeleteNote([FromRoute] Guid id)
+    {
+      var note = await _fullStackDbContext.Notes.FindAsync(id);
+
+      if (note == null)
+      {
+        return NotFound();
+      }
+
+      _fullStackDbContext.Notes.Remove(note);
+      await _fullStackDbContext.SaveChangesAsync();
+
+      return Ok(note);
+    }
   }
 }
