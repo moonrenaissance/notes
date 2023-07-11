@@ -1,10 +1,10 @@
-namespace Web_API.Controllers
+namespace Web_API.Models
 {
     public class Tags
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string Title { get; set; }
         public string Color { get; set; }
         public List<Notes> Notes { get; set; }
-  }
+    }
 }

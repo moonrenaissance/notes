@@ -5,14 +5,14 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Web_API.Controllers;
+using Web_API.Data;
 
 #nullable disable
 
 namespace Web_API.Migrations
 {
     [DbContext(typeof(FullStackDbContext))]
-    [Migration("20230708094604_DbMigration")]
+    [Migration("20230711093155_DbMigration")]
     partial class DbMigration
     {
         /// <inheritdoc />
@@ -27,11 +27,11 @@ namespace Web_API.Migrations
 
             modelBuilder.Entity("NotesTags", b =>
                 {
-                    b.Property<int>("NotesId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("NotesId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("TagsId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("TagsId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("NotesId", "TagsId");
 
@@ -40,13 +40,11 @@ namespace Web_API.Migrations
                     b.ToTable("NotesTags");
                 });
 
-            modelBuilder.Entity("Web_API.Controllers.Notes", b =>
+            modelBuilder.Entity("Web_API.Models.Notes", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
@@ -62,13 +60,11 @@ namespace Web_API.Migrations
                     b.ToTable("Notes");
                 });
 
-            modelBuilder.Entity("Web_API.Controllers.Tags", b =>
+            modelBuilder.Entity("Web_API.Models.Tags", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Color")
                         .HasColumnType("nvarchar(max)");
@@ -83,13 +79,13 @@ namespace Web_API.Migrations
 
             modelBuilder.Entity("NotesTags", b =>
                 {
-                    b.HasOne("Web_API.Controllers.Notes", null)
+                    b.HasOne("Web_API.Models.Notes", null)
                         .WithMany()
                         .HasForeignKey("NotesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Web_API.Controllers.Tags", null)
+                    b.HasOne("Web_API.Models.Tags", null)
                         .WithMany()
                         .HasForeignKey("TagsId")
                         .OnDelete(DeleteBehavior.Cascade)
