@@ -40,9 +40,10 @@ namespace Web_API.Controllers
         [Route("{Text}")]
         public async Task<IActionResult> GetNoteOnText([FromRoute] string Text)
         {
+            //var tags
             var notes = await _fullStackDbContext.Notes.
-                Where(x => x.Title.Contains(Text) 
-                      || x.Description.Contains(Text)).ToListAsync();
+                Where(x => x.Title.ToLower().Contains(Text.ToLower()) 
+                      || x.Description.ToLower().Contains(Text.ToLower())).ToListAsync();
 
             if (notes == null)
             {

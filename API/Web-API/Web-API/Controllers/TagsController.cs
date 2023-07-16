@@ -40,7 +40,8 @@ namespace Web_API.Controllers
         public async Task<IActionResult> GetTagOnText([FromRoute] string Text)
         {
             var tags = await _fullStackDbContext.Tags.
-                Where(x => x.Title.Contains(Text)).ToListAsync();
+                Where(x => x.Title.ToLower().
+                    Contains(Text.ToLower())).ToListAsync();
 
             if (tags == null)
             {
