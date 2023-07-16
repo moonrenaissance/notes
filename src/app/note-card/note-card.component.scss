@@ -79,3 +79,10 @@
         background-color: darken($color: $light-red, $amount: 4%);
     }
 }
+
+.note-card-tags {
+    position: relative;
+
+    padding: 25px;
+    max-height: 90px;
+}

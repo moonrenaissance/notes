@@ -19,7 +19,7 @@ export class NoteCardComponent {
   ngAfterViewInit() {
 
     let style = window.getComputedStyle(this.bodyText.nativeElement);
-    let viewableHeight = parseInt(style.getPropertyValue("height"), 10);
+    //let viewableHeight = parseInt(style.getPropertyValue("height"), 10);
 
     if (this.noteP.nativeElement.scrollHeight > this.bodyText.nativeElement.clientHeight) {
       this.renderer.setStyle(this.truncator.nativeElement, 'display', 'block');
