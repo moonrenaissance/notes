@@ -17,6 +17,10 @@ export class NotesService {
     return this.http.get<Note[]>(this.ApiUrl + '/api/Notes');
   }
 
+  getNoteOnText(Text: string): Observable<Note[]>{
+    return this.http.get<Note[]>(this.ApiUrl + '/api/Notes' + Text);
+  }
+
   addNote(addNoteRequest: Note): Observable<Note>{
     addNoteRequest.id = '00000000-0000-0000-0000-000000000000';
     return this.http.post<Note>(this.ApiUrl + '/api/Notes', addNoteRequest);
