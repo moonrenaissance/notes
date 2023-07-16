@@ -41,10 +41,8 @@ namespace Web_API.Controllers
         public async Task<IActionResult> GetNoteOnText([FromRoute] string Text)
         {
             var notes = await _fullStackDbContext.Notes.
-                Where(x => x.Title.Contains(Text)).ToListAsync();
-
-            notes.AddRange(await _fullStackDbContext.Notes.
-                Where(x => x.Description.Contains(Text)).ToListAsync());
+                Where(x => x.Title.Contains(Text) 
+                      || x.Description.Contains(Text)).ToListAsync();
 
             if (notes == null)
             {
