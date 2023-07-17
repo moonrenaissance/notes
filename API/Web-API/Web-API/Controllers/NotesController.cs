@@ -30,6 +30,14 @@ namespace Web_API.Controllers
         {
             notesRequest.Id = Guid.NewGuid();
 
+            if (notesRequest.NotesTags != null)
+            {
+                foreach (var NoteTag in notesRequest.NotesTags)
+                {
+                    NoteTag.NoteId = notesRequest.Id;
+                }
+            }
+
             await _fullStackDbContext.Notes.AddAsync(notesRequest);
             await _fullStackDbContext.SaveChangesAsync();
 
@@ -40,10 +48,16 @@ namespace Web_API.Controllers
         [Route("{Text}")]
         public async Task<IActionResult> GetNoteOnText([FromRoute] string Text)
         {
-            //var tags
+            //var tags = await _fullStackDbContext.Tags.Where
+            //    (t => t.Title.ToLower().Contains(Text)).ToListAsync();
+
+            //var notes = await _fullStackDbContext.Notes.Include(n => n.NotesTags).ToListAsync();
+
             var notes = await _fullStackDbContext.Notes.
-                Where(x => x.Title.ToLower().Contains(Text.ToLower()) 
-                      || x.Description.ToLower().Contains(Text.ToLower())).ToListAsync();
+                Where(n => n.Title.ToLower().Contains(Text.ToLower())
+                      || n.Description.ToLower().Contains(Text.ToLower())).ToListAsync();
+
+
 
             if (notes == null)
             {
@@ -61,7 +75,7 @@ namespace Web_API.Controllers
 
             if(note == null)
             {
-            return NotFound();
+                return NotFound();
             }
 
             return Ok(note);
@@ -75,13 +89,13 @@ namespace Web_API.Controllers
 
             if (note == null)
             {
-            return NotFound();
+                return NotFound();
             }
 
             note.Title = updateNoteRequest.Title;
             note.Description = updateNoteRequest.Description;
             note.Date = updateNoteRequest.Date;
-            note.Tags = updateNoteRequest.Tags;
+            //note.Tags = updateNoteRequest.Tags;
 
             await _fullStackDbContext.SaveChangesAsync();
 

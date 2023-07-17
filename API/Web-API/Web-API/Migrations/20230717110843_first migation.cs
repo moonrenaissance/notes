@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Web_API.Migrations
 {
     /// <inheritdoc />
-    public partial class DbMigration : Migration
+    public partial class firstmigation : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,7 +16,7 @@ namespace Web_API.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -30,7 +30,7 @@ namespace Web_API.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Color = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -42,30 +42,30 @@ namespace Web_API.Migrations
                 name: "NotesTags",
                 columns: table => new
                 {
-                    NotesId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    TagsId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    NoteId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    TagId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_NotesTags", x => new { x.NotesId, x.TagsId });
+                    table.PrimaryKey("PK_NotesTags", x => new { x.NoteId, x.TagId });
                     table.ForeignKey(
-                        name: "FK_NotesTags_Notes_NotesId",
-                        column: x => x.NotesId,
+                        name: "FK_NotesTags_Notes_TagId",
+                        column: x => x.TagId,
                         principalTable: "Notes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_NotesTags_Tags_TagsId",
-                        column: x => x.TagsId,
+                        name: "FK_NotesTags_Tags_NoteId",
+                        column: x => x.NoteId,
                         principalTable: "Tags",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_NotesTags_TagsId",
+                name: "IX_NotesTags_TagId",
                 table: "NotesTags",
-                column: "TagsId");
+                column: "TagId");
         }
 
         /// <inheritdoc />

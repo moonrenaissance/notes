@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Web_API.Data;
 
@@ -11,9 +12,11 @@ using Web_API.Data;
 namespace Web_API.Migrations
 {
     [DbContext(typeof(FullStackDbContext))]
-    partial class FullStackDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230717110843_first migation")]
+    partial class firstmigation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -78,13 +81,13 @@ namespace Web_API.Migrations
 
             modelBuilder.Entity("Web_API.Models.NoteTag", b =>
                 {
-                    b.HasOne("Web_API.Models.Notes", "Note")
+                    b.HasOne("Web_API.Models.Tags", "Tag")
                         .WithMany("NotesTags")
                         .HasForeignKey("NoteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Web_API.Models.Tags", "Tag")
+                    b.HasOne("Web_API.Models.Notes", "Note")
                         .WithMany("NotesTags")
                         .HasForeignKey("TagId")
                         .OnDelete(DeleteBehavior.Cascade)

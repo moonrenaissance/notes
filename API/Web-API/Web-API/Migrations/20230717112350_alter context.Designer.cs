@@ -12,8 +12,8 @@ using Web_API.Data;
 namespace Web_API.Migrations
 {
     [DbContext(typeof(FullStackDbContext))]
-    [Migration("20230711093155_DbMigration")]
-    partial class DbMigration
+    [Migration("20230717112350_alter context")]
+    partial class altercontext
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,17 +25,17 @@ namespace Web_API.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("NotesTags", b =>
+            modelBuilder.Entity("Web_API.Models.NoteTag", b =>
                 {
-                    b.Property<Guid>("NotesId")
+                    b.Property<Guid>("NoteId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("TagsId")
+                    b.Property<Guid>("TagId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("NotesId", "TagsId");
+                    b.HasKey("NoteId", "TagId");
 
-                    b.HasIndex("TagsId");
+                    b.HasIndex("TagId");
 
                     b.ToTable("NotesTags");
                 });
@@ -53,6 +53,7 @@ namespace Web_API.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -70,6 +71,7 @@ namespace Web_API.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -77,19 +79,33 @@ namespace Web_API.Migrations
                     b.ToTable("Tags");
                 });
 
-            modelBuilder.Entity("NotesTags", b =>
+            modelBuilder.Entity("Web_API.Models.NoteTag", b =>
                 {
-                    b.HasOne("Web_API.Models.Notes", null)
-                        .WithMany()
-                        .HasForeignKey("NotesId")
+                    b.HasOne("Web_API.Models.Notes", "Note")
+                        .WithMany("NotesTags")
+                        .HasForeignKey("NoteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Web_API.Models.Tags", null)
-                        .WithMany()
-                        .HasForeignKey("TagsId")
+                    b.HasOne("Web_API.Models.Tags", "Tag")
+                        .WithMany("NotesTags")
+                        .HasForeignKey("TagId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Note");
+
+                    b.Navigation("Tag");
+                });
+
+            modelBuilder.Entity("Web_API.Models.Notes", b =>
+                {
+                    b.Navigation("NotesTags");
+                });
+
+            modelBuilder.Entity("Web_API.Models.Tags", b =>
+                {
+                    b.Navigation("NotesTags");
                 });
 #pragma warning restore 612, 618
         }

@@ -79,7 +79,7 @@ namespace Web_API.Controllers
 
             tag.Title = updateTagRequest.Title;
             tag.Color = updateTagRequest.Color;
-            tag.Notes = updateTagRequest.Notes;
+            //tag.Notes = updateTagRequest.Notes;
 
         await _fullStackDbContext.SaveChangesAsync();
 
