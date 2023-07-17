@@ -172,3 +172,7 @@ X:\Dev\consom_practise\notes\API\Web-API\Web-API\obj\Debug\net6.0\refint\Web-API
 X:\Dev\consom_practise\notes\API\Web-API\Web-API\obj\Debug\net6.0\Web-API.pdb
 X:\Dev\consom_practise\notes\API\Web-API\Web-API\obj\Debug\net6.0\Web-API.genruntimeconfig.cache
 X:\Dev\consom_practise\notes\API\Web-API\Web-API\obj\Debug\net6.0\ref\Web-API.dll
+X:\Dev\consom_practise\notes\API\Web-API\Web-API\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+X:\Dev\consom_practise\notes\API\Web-API\Web-API\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+X:\Dev\consom_practise\notes\API\Web-API\Web-API\bin\Debug\net6.0\Newtonsoft.Json.dll
+X:\Dev\consom_practise\notes\API\Web-API\Web-API\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
