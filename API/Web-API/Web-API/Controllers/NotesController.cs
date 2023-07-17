@@ -20,7 +20,7 @@ namespace Web_API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllNotes()
         {
-            var notes = await _fullStackDbContext.Notes.ToListAsync();
+            var notes = await _fullStackDbContext.Notes.Include(t => t.NotesTags).ToListAsync();
 
             return Ok(notes);
         }
@@ -35,6 +35,14 @@ namespace Web_API.Controllers
                 foreach (var NoteTag in notesRequest.NotesTags)
                 {
                     NoteTag.NoteId = notesRequest.Id;
+                    var tag = _fullStackDbContext.Tags.FirstOrDefault(t => t.Id == NoteTag.TagId);
+
+                    if (tag == null)
+                    {
+                        return BadRequest();
+                    }
+
+                    NoteTag.Tag = tag;
                 }
             }
 
@@ -48,16 +56,9 @@ namespace Web_API.Controllers
         [Route("{Text}")]
         public async Task<IActionResult> GetNoteOnText([FromRoute] string Text)
         {
-            //var tags = await _fullStackDbContext.Tags.Where
-            //    (t => t.Title.ToLower().Contains(Text)).ToListAsync();
-
-            //var notes = await _fullStackDbContext.Notes.Include(n => n.NotesTags).ToListAsync();
-
             var notes = await _fullStackDbContext.Notes.
                 Where(n => n.Title.ToLower().Contains(Text.ToLower())
                       || n.Description.ToLower().Contains(Text.ToLower())).ToListAsync();
-
-
 
             if (notes == null)
             {
@@ -85,17 +86,21 @@ namespace Web_API.Controllers
         [Route("{id:Guid}")]
         public async Task<IActionResult> UpdateNote([FromRoute] Guid id, Notes updateNoteRequest)
         {
-            var note = await _fullStackDbContext.Notes.FindAsync(id);
+            var note = await _fullStackDbContext.Notes.FindAsync(id);            
 
             if (note == null)
             {
                 return NotFound();
             }
 
-            note.Title = updateNoteRequest.Title;
+            if (updateNoteRequest.Title != null)
+            {
+                note.Title = updateNoteRequest.Title;
+            }
+
             note.Description = updateNoteRequest.Description;
             note.Date = updateNoteRequest.Date;
-            //note.Tags = updateNoteRequest.Tags;
+            note.NotesTags = updateNoteRequest.NotesTags;
 
             await _fullStackDbContext.SaveChangesAsync();
 
@@ -110,7 +115,15 @@ namespace Web_API.Controllers
 
             if (note == null)
             {
-            return NotFound();
+                return NotFound();
+            }
+
+            var noteTags = await _fullStackDbContext.NotesTags.Where(
+                nt => nt.NoteId == note.Id).ToListAsync();
+
+            if (note != null)
+            {
+                _fullStackDbContext.NotesTags.RemoveRange(noteTags);
             }
 
             _fullStackDbContext.Notes.Remove(note);
