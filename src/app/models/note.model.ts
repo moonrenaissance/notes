@@ -1,6 +1,6 @@
-export interface Note{
-    id: string,
-    title: string,
-    description: string,
-    date: Date, 
+export class Note{
+    id: string;
+    title: string;
+    description: string;
+    date: Date;
 }

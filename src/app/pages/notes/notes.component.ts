@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Note } from 'src/app/models/note.model';
+import { NotesService } from 'src/app/services/notes.service';
 
 @Component({
   selector: 'app-notes',
@@ -7,4 +9,11 @@ import { Component } from '@angular/core';
 })
 export class NotesComponent {
 
+  //notes: Note[] = new Array<Note>();
+
+  constructor() {}
+
+  ngOnInit() {
+    //this.notes = this.notesService.getAllNotes();
+  }
 }
