@@ -17,6 +17,10 @@ export class TagsService {
     return this.http.get<Tag[]>(this.ApiUrl + '/api/Tags');
   }
 
+  getTagOnText(Text: string): Observable<Tag[]>{
+    return this.http.get<Tag[]>(this.ApiUrl + '/api/Tags' + Text);
+  }
+
   addTag(addTagRequest: Tag): Observable<Tag>{
     addTagRequest.id = '00000000-0000-0000-0000-000000000000';
     return this.http.post<Tag>(this.ApiUrl + '/api/Tags', addTagRequest);

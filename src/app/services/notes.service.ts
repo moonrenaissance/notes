@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class NotesService {
 
   ApiUrl: string = environment.ApiUrl;
@@ -15,6 +16,10 @@ export class NotesService {
 
   getAllNotes(): Observable<Note[]>{
     return this.http.get<Note[]>(this.ApiUrl + '/api/Notes');
+  }
+
+  getNoteOnText(Text: string): Observable<Note[]>{
+    return this.http.get<Note[]>(this.ApiUrl + '/api/Notes' + Text);
   }
 
   addNote(addNoteRequest: Note): Observable<Note>{

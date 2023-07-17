@@ -1,0 +1,88 @@
+<div class="form-container">
+    <form #noteForm="ngForm" (ngSubmit)="onSubmit(noteForm)">
+        <div class="field">
+            <label class="label">
+                Title 
+            </label>
+            <div class="control">
+                <input type="text" name="title" [ngModel]="note.title" required class="input">
+            </div>
+        </div>
+
+        <br>
+
+        <div class="field">
+            <label class="label">
+                Description
+            </label>
+            <div class="control">
+                <textarea class="textarea" name="description" [ngModel]="note.description"></textarea>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="tags-selector">
+            <label class="label">
+                Tags
+            </label>
+            <div class="check-group">
+                <label for="myCheckbox01" class="checkbox">
+                  <input class="checkbox__input" type="checkbox" id="myCheckbox01">
+                  
+                  <svg class="checkbox__icon" viewBox="0 0 22 22">
+                    <rect width="21" height="21" x=".5" y=".5" fill="#FFF" stroke="black" rx="3" />
+                    <path class="tick" stroke="#fe76c2" fill="none" stroke-linecap="round" stroke-width="4" d="M4 10l5 5 9-9" />
+                  </svg>
+              
+                  <span class="checkbox__label">Work</span>
+                </label>
+              
+                <label for="myCheckbox02" class="checkbox">
+                  <input class="checkbox__input" type="checkbox" id="myCheckbox02">
+                  <svg class="checkbox__icon" viewBox="0 0 22 22">
+                    <rect width="21" height="21" x=".5" y=".5" fill="#FFF" stroke="black" rx="3" />
+                    <path class="tick" stroke="#37c7f2" fill="none" stroke-linecap="round" stroke-width="4" d="M4 10l5 5 9-9" />
+                  </svg>
+                  <span class="checkbox__label">Home</span>
+                </label>
+              
+                <label for="myCheckbox03" class="checkbox">
+                  <input class="checkbox__input" type="checkbox" id="myCheckbox03">
+                  <svg class="checkbox__icon" viewBox="0 0 22 22">
+                    <rect width="21" height="21" x=".5" y=".5" fill="#FFF" stroke="black" rx="3" />
+                    <path class="tick" stroke="#fe76c2" fill="none" stroke-linecap="round" stroke-width="4" d="M4 10l5 5 9-9" />
+                  </svg>
+                  <span class="checkbox__label">Family</span>
+                </label>
+              
+                <label for="myCheckbox04" class="checkbox">
+                  <input class="checkbox__input" type="checkbox" id="myCheckbox04">
+                  <svg class="checkbox__icon" viewBox="0 0 22 22">
+                    <rect width="21" height="21" x=".5" y=".5" fill="#FFF" stroke="black" rx="3" />
+                    <path class="tick" stroke="#37c7f2" fill="none" stroke-linecap="round" stroke-width="4" d="M4 10l5 5 9-9" />
+                  </svg>
+                  <span class="checkbox__label">Entertainments</span>
+                </label>
+       
+                <div class="check-group__result">Selected:</div>
+              </div>
+        </div>
+
+        <br>
+
+        <div class="field is-grouped is-pulled-right">
+            <div class="control">
+                <button class="button is-text">
+                    Cancel
+                </button>
+            </div>
+            <div class="control">
+                <button class="button is-success" type="submit" [disabled]="!noteForm.valid">
+                    Save
+                </button>
+            </div>
+        </div>
+
+    </form>
+</div>
