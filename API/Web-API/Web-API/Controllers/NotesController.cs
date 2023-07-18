@@ -58,7 +58,9 @@ namespace Web_API.Controllers
         {
             var notes = await _fullStackDbContext.Notes.
                 Where(n => n.Title.ToLower().Contains(Text.ToLower())
-                      || n.Description.ToLower().Contains(Text.ToLower())).ToListAsync();
+                      || n.Description.ToLower().Contains(Text.ToLower())
+                      || n.NotesTags.Any(
+                          nt => nt.Tag.Title.ToLower().Contains(Text.ToLower()))).ToListAsync();
 
             if (notes == null)
             {
