@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Note } from 'src/app/models/note.model';
+import { NotesService } from 'src/app/services/notes.service';
 
 @Component({
   selector: 'app-note-details',
@@ -11,8 +12,16 @@ import { Note } from 'src/app/models/note.model';
 export class NoteDetailsComponent implements OnInit{
   
   note: Note;
+
+  addNoteRequest: Note = {
+    id: '',
+    title: '',
+    description: '',
+    date: new Date(0, 0, 0, 0, 0),
+    notesTags: []
+  }
   
-  constructor(private router: Router) {}
+  constructor(private router: Router, private noteService: NotesService) {}
 
   ngOnInit() {
     this.note = new Note();
@@ -24,5 +33,15 @@ export class NoteDetailsComponent implements OnInit{
 
   Cancel() {
     this.router.navigateByUrl('/');
+  }
+
+  addNote(){
+    console.log(this.addNoteRequest);
+    this.noteService.addNote(this.addNoteRequest)
+    .subscribe({
+      next: (note)=>{
+        console.log(note);
+      }
+    });
   }
 }
