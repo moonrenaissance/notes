@@ -12,8 +12,6 @@ import { TagsService } from 'src/app/services/tags.service';
   styleUrls: ['./note-details.component.scss']
 })
 export class NoteDetailsComponent implements OnInit{
-  
-  note: Note;
 
   noteDetails: Note = {
     id: '',
@@ -25,9 +23,7 @@ export class NoteDetailsComponent implements OnInit{
 
   tags: Tag[] = [];
 
-
-  
-  constructor(private noteService: NotesService, private tagService: TagsService, private router: Router, private route: ActivatedRoute) {}
+  constructor(private noteService: NotesService,private tagService: TagsService , private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe({
@@ -55,8 +51,6 @@ export class NoteDetailsComponent implements OnInit{
         console.log(response);
       }
     });
-
-    this.note = new Note();
   }
 
   onSubmit(form: NgForm) {

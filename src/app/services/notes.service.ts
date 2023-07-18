@@ -19,7 +19,7 @@ export class NotesService {
   }
 
   getNoteOnText(Text: string): Observable<Note[]>{
-    return this.http.get<Note[]>(this.ApiUrl + '/api/Notes' + Text);
+    return this.http.get<Note[]>(this.ApiUrl + '/api/Notes/' + Text);
   }
 
   addNote(addNoteRequest: Note): Observable<Note>{
@@ -28,14 +28,14 @@ export class NotesService {
   }
 
   getNote(id: string): Observable<Note>{
-    return this.http.get<Note>(this.ApiUrl + '/api/Notes' + id);
+    return this.http.get<Note>(this.ApiUrl + '/api/Notes/' + id);
   }
 
   updateNote(id: string, updateNoteRequest: Note): Observable<Note>{
-    return this.http.put<Note>(this.ApiUrl + '/api/Notes' + id, updateNoteRequest);
+    return this.http.put<Note>(this.ApiUrl + '/api/Notes/' + id, updateNoteRequest);
   }
 
   deleteNote(id: string): Observable<Note>{
-    return this.http.delete<Note>(this.ApiUrl + '/api/Notes' + id);
+    return this.http.delete<Note>(this.ApiUrl + '/api/Notes/' + id);
   }
 }
