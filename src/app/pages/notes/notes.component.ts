@@ -9,11 +9,9 @@ import { NotesService } from 'src/app/services/notes.service';
 })
 export class NotesComponent {
 
-  //notes: Note[] = new Array<Note>();
-
   constructor() {}
 
   ngOnInit() {
-    //this.notes = this.notesService.getAllNotes();
+    
   }
 }

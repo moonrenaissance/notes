@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router, Params } from '@angular/router';
 import { Note } from 'src/app/models/note.model';
 
 @Component({
@@ -11,8 +11,9 @@ import { Note } from 'src/app/models/note.model';
 export class NoteDetailsComponent implements OnInit{
   
   note: Note;
+  params: Params;
   
-  constructor(private router: Router) {}
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.note = new Note();

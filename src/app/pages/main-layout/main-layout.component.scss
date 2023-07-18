@@ -32,4 +32,21 @@
         color: white;
         font-size: 24px;
     }
+
+    a {
+        color: white;
+        font-size: 18px;
+        margin-left: 10px;
+    }
+
+    a:hover {
+        text-decoration-line: underline;
+    }
+
+    a.active {
+        background: linear-gradient(to left, #f69ec4, #f9dd94 100%);
+        background-position: 0 100%;
+        background-size: 100% 2px;
+        background-repeat: repeat-x;
+    }
 }
