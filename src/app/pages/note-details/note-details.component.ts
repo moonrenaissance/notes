@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Note } from 'src/app/models/note.model';
+import { Tag } from 'src/app/models/tag.model';
 import { NotesService } from 'src/app/services/notes.service';
+import { TagsService } from 'src/app/services/tags.service';
 
 @Component({
   selector: 'app-note-details',
@@ -13,17 +15,47 @@ export class NoteDetailsComponent implements OnInit{
   
   note: Note;
 
-  addNoteRequest: Note = {
+  noteDetails: Note = {
     id: '',
     title: '',
     description: '',
     date: new Date(0, 0, 0, 0, 0),
     notesTags: []
   }
+
+  tags: Tag[] = [];
+
+
   
-  constructor(private router: Router, private noteService: NotesService) {}
+  constructor(private noteService: NotesService,private tagService: TagsService , private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
+    this.route.paramMap.subscribe({
+      next: (params) =>{
+        const id = params.get('id');
+
+        if(id){
+          this.noteService.getNote(id)
+          .subscribe({
+            next:(response) =>{
+              this.noteDetails = response;
+            }
+          });
+        }
+      }
+    })
+
+    this.tagService.getAllTags()
+    .subscribe({
+      next: (tags) =>{
+        console.log(tags);
+        this.tags = tags;
+      },
+      error: (response)=>{
+        console.log(response);
+      }
+    });
+
     this.note = new Note();
   }
 
@@ -35,9 +67,18 @@ export class NoteDetailsComponent implements OnInit{
     this.router.navigateByUrl('/');
   }
 
+  updateNote(){
+    this.noteService.updateNote(this.noteDetails.id, this.noteDetails)
+    .subscribe({
+      next: (response) => {
+        
+      }
+    })
+  }
+
   addNote(){
-    console.log(this.addNoteRequest);
-    this.noteService.addNote(this.addNoteRequest)
+    console.log(this.noteDetails);
+    this.noteService.addNote(this.noteDetails)
     .subscribe({
       next: (note)=>{
         console.log(note);
