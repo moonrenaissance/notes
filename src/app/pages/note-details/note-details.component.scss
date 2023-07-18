@@ -76,25 +76,3 @@ input, textarea {
 .check-group > * + * {
     margin-top: 0.75rem;
 }
-  
-.check-group .checkbox {
-    counter-increment: total;
-}
-  
-.check-group input[type=checkbox]:checked {
-    counter-increment: checked;
-}
-  
-.check-group__result {
-    font-weight: bold;
-    
-    padding-top: 0.75rem;
-    
-    border-top: 1px solid rgba(0, 0, 0, 0.2);
-}
-  
-.check-group__result:after {
-    content: counter(checked) " / " counter(total);
-    
-    padding-left: 1ch;
-  }
