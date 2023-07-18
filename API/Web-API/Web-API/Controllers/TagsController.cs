@@ -56,7 +56,7 @@ namespace Web_API.Controllers
         [Route("{id:Guid}")]
         public async Task<IActionResult> GetTag([FromRoute] Guid id)
         {
-            var tag = await _fullStackDbContext.Tags.FirstOrDefaultAsync(x => x.Id == id);
+            var tag = await _fullStackDbContext.Tags.FirstOrDefaultAsync(t => t.Id == id);
 
             if (tag == null)
             {
@@ -79,7 +79,7 @@ namespace Web_API.Controllers
 
             tag.Title = updateTagRequest.Title;
             tag.Color = updateTagRequest.Color;
-            //tag.Notes = updateTagRequest.Notes;
+            tag.NotesTags = updateTagRequest.NotesTags;
 
         await _fullStackDbContext.SaveChangesAsync();
 
