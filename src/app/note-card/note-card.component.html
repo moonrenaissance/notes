@@ -1,21 +1,21 @@
 <div #container class="note-card-container">
     <div class="note-card-content">
         <h1 class="note-card-title">
-            Example
+            {{title}}
         </h1>
         <div #bodyText class="note-card-body">
             <p #noteP>
-                What decides the fate of mankind in this world? 
-                Some invisible being or law, like the Hand of the Lord hovering over the world? 
-                At least it is true that man has no power even over his own will.
+               {{body}}
             </p>
             <div #truncator class="fade-out-truncation"></div>
         </div>
     </div>
-        <div class="note-card-tags">
-            <span>
-                Work
-            </span>
+        <div class="note-card-tags">            
+            <rt *ngFor = "let title of tagsTitles">
+                <span>
+                    {{title}}
+                </span>
+            </rt>
         </div>
     <div class="delete-button"></div>
 </div>

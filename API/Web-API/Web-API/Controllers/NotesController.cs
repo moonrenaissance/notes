@@ -20,7 +20,8 @@ namespace Web_API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllNotes()
         {
-            var notes = await _fullStackDbContext.Notes.Include(t => t.NotesTags).ToListAsync();
+            var notes = await _fullStackDbContext.Notes.Include(
+                n => n.NotesTags).ToListAsync();
 
             return Ok(notes);
         }
@@ -39,7 +40,7 @@ namespace Web_API.Controllers
 
                     if (tag == null)
                     {
-                        return BadRequest();
+                        return NotFound();
                     }
 
                     NoteTag.Tag = tag;
@@ -56,11 +57,12 @@ namespace Web_API.Controllers
         [Route("{Text}")]
         public async Task<IActionResult> GetNoteOnText([FromRoute] string Text)
         {
-            var notes = await _fullStackDbContext.Notes.
-                Where(n => n.Title.ToLower().Contains(Text.ToLower())
-                      || n.Description.ToLower().Contains(Text.ToLower())
-                      || n.NotesTags.Any(
-                          nt => nt.Tag.Title.ToLower().Contains(Text.ToLower()))).ToListAsync();
+            var notes = await _fullStackDbContext.Notes.Where(
+                n => n.Title.ToLower().Contains(Text.ToLower())
+                || n.Description.ToLower().Contains(Text.ToLower())
+                || n.NotesTags.Any(
+                        nt => nt.Tag.Title.ToLower().Contains(Text.ToLower())
+                            )).ToListAsync();
 
             if (notes == null)
             {
@@ -74,7 +76,8 @@ namespace Web_API.Controllers
         [Route("{id:Guid}")]
         public async Task<IActionResult> GetNote([FromRoute] Guid id)
         {
-            var note = await _fullStackDbContext.Notes.FirstOrDefaultAsync(x => x.Id == id);
+            var note = await _fullStackDbContext.Notes.Include(n => n.NotesTags
+                ).FirstOrDefaultAsync(x => x.Id == id);
 
             if(note == null)
             {
@@ -100,6 +103,12 @@ namespace Web_API.Controllers
                 note.Title = updateNoteRequest.Title;
             }
 
+            var noteTags = await _fullStackDbContext.NotesTags.Where(
+                nt => nt.NoteId == note.Id).ToListAsync();
+
+            _fullStackDbContext.NotesTags.RemoveRange(noteTags);
+
+
             note.Description = updateNoteRequest.Description;
             note.Date = updateNoteRequest.Date;
             note.NotesTags = updateNoteRequest.NotesTags;
@@ -123,10 +132,7 @@ namespace Web_API.Controllers
             var noteTags = await _fullStackDbContext.NotesTags.Where(
                 nt => nt.NoteId == note.Id).ToListAsync();
 
-            if (note != null)
-            {
-                _fullStackDbContext.NotesTags.RemoveRange(noteTags);
-            }
+            _fullStackDbContext.NotesTags.RemoveRange(noteTags);
 
             _fullStackDbContext.Notes.Remove(note);
             await _fullStackDbContext.SaveChangesAsync();

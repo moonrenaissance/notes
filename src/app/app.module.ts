@@ -10,9 +10,7 @@ import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
 import { NoteCardComponent } from './note-card/note-card.component';
 import { NoteDetailsComponent } from './pages/note-details/note-details.component';
 import { HttpClientModule } from '@angular/common/http';
-import { TagsComponent } from './pages/tags/tags.component';
-import { RemindersComponent } from './pages/reminders/reminders.component';
-import { TagCardComponent } from './tag-card/tag-card.component';
+
 
 @NgModule({
   declarations: [
@@ -21,15 +19,12 @@ import { TagCardComponent } from './tag-card/tag-card.component';
     MainLayoutComponent,
     NoteCardComponent,
     NoteDetailsComponent,
-    TagsComponent,
-    RemindersComponent,
-    TagCardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

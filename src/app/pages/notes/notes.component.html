@@ -12,9 +12,11 @@
     </div>
 
     <div class="notes-list">
-        <tr *ngFor="let note of notes">
-            <app-note-card [routerLink]="note.id"></app-note-card>
-        </tr>
+        <rt *ngFor = "let note of notes">
+            
+            <app-note-card title="{{note.title}}" body="{{note.description}}" noteId="{{note.id}}"></app-note-card>
+            
+        </rt>
     </div>
     
     <button class="button floating-add-button is-primary" routerLink="notes/new">

@@ -27,7 +27,7 @@ export class TagsService {
   }
 
   getTag(id: string): Observable<Tag>{
-    return this.http.get<Tag>(this.ApiUrl + '/api/Tags' + id);
+    return this.http.get<Tag>(this.ApiUrl + '/api/Tags/' + id);
   }
 
   updateTag(id: string, updateTagRequest: Tag): Observable<Tag>{
