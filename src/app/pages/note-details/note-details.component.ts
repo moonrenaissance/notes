@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Note } from 'src/app/models/note.model';
 import { Tag } from 'src/app/models/tag.model';
@@ -53,9 +52,10 @@ export class NoteDetailsComponent implements OnInit{
         console.log(response);
       }
     });
+
   }
 
-  onSubmit(form: NgForm) {
+  onSubmit() {
     if(this.typePage)
       this.updateNote();
     else
@@ -70,7 +70,7 @@ export class NoteDetailsComponent implements OnInit{
     this.noteService.updateNote(this.noteDetails.id, this.noteDetails)
     .subscribe({
       next: (response) => {
-        console.log(this.noteDetails.title);
+        console.log(response);
         this.router.navigateByUrl('/');
       }
     })

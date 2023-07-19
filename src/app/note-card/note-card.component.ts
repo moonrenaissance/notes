@@ -2,6 +2,7 @@ import { Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@ang
 import { NotesService } from 'src/app/services/notes.service';
 import { TagsService } from 'src/app/services/tags.service';
 import { Router } from '@angular/router';
+import { Tag } from '../models/tag.model';
 
 @Component({
   selector: 'app-note-card',
@@ -18,7 +19,7 @@ export class NoteCardComponent implements OnInit{
   @ViewChild('bodyText') bodyText: ElementRef<HTMLElement>;
   @ViewChild('noteP') noteP: ElementRef<HTMLElement>;
 
-  tagsTitles: string[] = [];
+  selectedTags: Tag[] = [];
 
   constructor(private renderer: Renderer2,
               private notesService: NotesService,
@@ -36,7 +37,6 @@ export class NoteCardComponent implements OnInit{
     else {
       this.renderer.setStyle(this.truncator.nativeElement, 'display', 'none');
     }
-
   }
 
 
@@ -50,9 +50,7 @@ export class NoteCardComponent implements OnInit{
           this.tagsServise.getTag(noteTag.tagId)
           .subscribe({
             next: (tag) =>{
-              this.tagsTitles.push(tag.title);
-              console.log(tag);
-
+              this.selectedTags.push(tag);
             },
 
             error: (response)=>{
@@ -72,7 +70,10 @@ export class NoteCardComponent implements OnInit{
     this.notesService.deleteNote(id)
     .subscribe({
       next: (response) =>{
-        this.router.navigateByUrl('/');
+        //reload
+        window.location.reload();
+        //not work =>
+        //this.router.navigateByUrl('/');
       }
     })
   }
