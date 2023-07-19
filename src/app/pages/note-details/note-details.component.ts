@@ -22,6 +22,7 @@ export class NoteDetailsComponent implements OnInit{
   }
 
   tags: Tag[] = [];
+  type: boolean = false;
 
   constructor(private noteService: NotesService,private tagService: TagsService , private router: Router, private route: ActivatedRoute) {}
 
@@ -29,7 +30,6 @@ export class NoteDetailsComponent implements OnInit{
     this.route.paramMap.subscribe({
       next: (params) =>{
         const id = params.get('id');
-        const form = document.getElementById('noteForm');
 
         if(id){
           this.noteService.getNote(id)
@@ -38,15 +38,8 @@ export class NoteDetailsComponent implements OnInit{
               this.noteDetails = response;
             }
           });
-          console.log('edit')
-          if(form){
-
-          }
+          this.type = true;
         }else{
-          console.log('add')
-          if(form){
-
-          }
         }
       }
     })
@@ -64,7 +57,10 @@ export class NoteDetailsComponent implements OnInit{
   }
 
   onSubmit(form: NgForm) {
-    this.router.navigateByUrl('/');
+    if(this.type)
+      this.updateNote();
+    else
+      this.addNote();
   }
 
   Cancel() {
@@ -75,7 +71,8 @@ export class NoteDetailsComponent implements OnInit{
     this.noteService.updateNote(this.noteDetails.id, this.noteDetails)
     .subscribe({
       next: (response) => {
-        
+        console.log(this.noteDetails.title);
+        this.router.navigateByUrl('/');
       }
     })
   }
@@ -86,6 +83,7 @@ export class NoteDetailsComponent implements OnInit{
     .subscribe({
       next: (note)=>{
         console.log(note);
+        this.router.navigateByUrl('/');
       }
     });
   }
