@@ -23,7 +23,10 @@ export class NoteDetailsComponent implements OnInit{
 
   tags: Tag[] = [];
 
-  constructor(private noteService: NotesService,private tagService: TagsService , private router: Router, private route: ActivatedRoute) {}
+  constructor(private noteService: NotesService,
+              private tagService: TagsService ,
+              private router: Router,
+              private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe({
@@ -36,6 +39,7 @@ export class NoteDetailsComponent implements OnInit{
           .subscribe({
             next:(response) =>{
               this.noteDetails = response;
+
             }
           });
           console.log('edit')
@@ -51,6 +55,13 @@ export class NoteDetailsComponent implements OnInit{
       }
     })
 
+
+    this.getAllTags();
+  }
+
+
+  getAllTags(): void
+  {
     this.tagService.getAllTags()
     .subscribe({
       next: (tags) =>{
@@ -62,6 +73,14 @@ export class NoteDetailsComponent implements OnInit{
       }
     });
   }
+
+
+  getNoteTags() : void
+  {
+
+    
+  }
+
 
   onSubmit(form: NgForm) {
     this.router.navigateByUrl('/');
