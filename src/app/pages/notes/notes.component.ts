@@ -25,18 +25,4 @@ export class NotesComponent implements OnInit{
       }
     });
   }
-<<<<<<< HEAD
 }
-=======
-  
-  deleteNote(id: string){
-    this.notesService.deleteNote(id)
-    .subscribe({
-      next: (response)=>{
-
-      }
-    })
-  }
-
-}
->>>>>>> f9e772239715df62830d13be1552d6dc3320a2f0
