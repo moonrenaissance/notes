@@ -43,4 +43,4 @@ Thumbs.db
 
 
 .vs
-/net6.0
+.API/Web-API/Web-API/bin/Debug/*
