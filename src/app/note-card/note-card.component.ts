@@ -1,13 +1,14 @@
 import { Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { NotesService } from 'src/app/services/notes.service';
 import { TagsService } from 'src/app/services/tags.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-note-card',
   templateUrl: './note-card.component.html',
   styleUrls: ['./note-card.component.scss']
 })
-export class NoteCardComponent implements OnInit {
+export class NoteCardComponent implements OnInit{
 
   @Input('title') title: string;
   @Input('body') body: string;
@@ -21,11 +22,13 @@ export class NoteCardComponent implements OnInit {
 
   constructor(private renderer: Renderer2,
               private notesService: NotesService,
-              private tagsServise: TagsService) {}
+              private tagsServise: TagsService,
+              private router: Router) {}
 
   ngAfterViewInit() {
 
     let style = window.getComputedStyle(this.bodyText.nativeElement);
+    //let viewableHeight = parseInt(style.getPropertyValue("height"), 10);
 
     if (this.noteP.nativeElement.scrollHeight > this.bodyText.nativeElement.clientHeight) {
       this.renderer.setStyle(this.truncator.nativeElement, 'display', 'block');
@@ -38,30 +41,39 @@ export class NoteCardComponent implements OnInit {
 
 
   ngOnInit() {
-      this.notesService.getNote(this.noteId)
-      .subscribe({
-        next: (note) =>{
+    this.notesService.getNote(this.noteId)
+    .subscribe({
+      next: (note) =>{
 
-          note.notesTags.forEach(noteTag => {
+        note.notesTags.forEach(noteTag => {
 
-            this.tagsServise.getTag(noteTag.tagId)
-            .subscribe({
-              next: (tag) =>{
-                this.tagsTitles.push(tag.title);
-                console.log(tag);
+          this.tagsServise.getTag(noteTag.tagId)
+          .subscribe({
+            next: (tag) =>{
+              this.tagsTitles.push(tag.title);
+              console.log(tag);
 
-              },
+            },
 
-              error: (response)=>{
-                console.log(response);
-              }
-            });
+            error: (response)=>{
+              console.log(response);
+            }
           });
+        });
 
-        },
-        error: (response)=>{
-          console.log(response);
-        }
-      });
-    }
+      },
+      error: (response)=>{
+        console.log(response);
+      }
+    });
+  }
+
+  deleteNote(id: string){
+    this.notesService.deleteNote(id)
+    .subscribe({
+      next: (response) =>{
+        this.router.navigateByUrl('/');
+      }
+    })
+  }
 }

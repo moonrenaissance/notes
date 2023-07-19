@@ -22,7 +22,7 @@ export class NoteDetailsComponent implements OnInit{
   }
 
   tags: Tag[] = [];
-  type: boolean = false;
+  typePage: boolean = false;
 
   constructor(private noteService: NotesService,private tagService: TagsService , private router: Router, private route: ActivatedRoute) {}
 
@@ -38,6 +38,7 @@ export class NoteDetailsComponent implements OnInit{
               this.noteDetails = response;
             }
           });
+          this.typePage = true;
         }
       }
     })
@@ -55,7 +56,7 @@ export class NoteDetailsComponent implements OnInit{
   }
 
   onSubmit(form: NgForm) {
-    if(this.type)
+    if(this.typePage)
       this.updateNote();
     else
       this.addNote();

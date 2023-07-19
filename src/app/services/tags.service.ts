@@ -18,7 +18,7 @@ export class TagsService {
   }
 
   getTagOnText(Text: string): Observable<Tag[]>{
-    return this.http.get<Tag[]>(this.ApiUrl + '/api/Tags/' + Text);
+    return this.http.get<Tag[]>(this.ApiUrl + '/api/Tags' + Text);
   }
 
   addTag(addTagRequest: Tag): Observable<Tag>{
@@ -31,10 +31,10 @@ export class TagsService {
   }
 
   updateTag(id: string, updateTagRequest: Tag): Observable<Tag>{
-    return this.http.put<Tag>(this.ApiUrl + '/api/Tags/' + id, updateTagRequest);
+    return this.http.put<Tag>(this.ApiUrl + '/api/Tags' + id, updateTagRequest);
   }
 
   deleteTag(id: string): Observable<Tag>{
-    return this.http.delete<Tag>(this.ApiUrl + '/api/Tags/' + id);
+    return this.http.delete<Tag>(this.ApiUrl + '/api/Tags' + id);
   }
 }

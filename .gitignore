@@ -41,8 +41,6 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# Custom
+
 .vs
-API/Web-API/Web-API/bin/
-API/Web-API/Web-API/obj/
-API/Web-API/Web-API/appsettings.json
+.API/Web-API/Web-API/bin/Debug/*
