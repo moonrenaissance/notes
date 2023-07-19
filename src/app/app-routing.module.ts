@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: '', component: MainLayoutComponent, children: [
     { path: '', component: NotesComponent },
     { path: ':notes/new', component: NoteDetailsComponent },
-    { path: ':notes/id', component: NoteDetailsComponent },
+    { path: ':notes/id/:id', component: NoteDetailsComponent },
     { path: ':notes/tags', component: TagsComponent },
     { path: ':notes/reminders', component: RemindersComponent }
   ]}

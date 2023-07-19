@@ -1,5 +1,5 @@
 <div class="form-container">
-    <form #noteForm="ngForm" (ngSubmit)="onSubmit(noteForm)">
+    <form #noteForm="ngForm" (ngSubmit)="onSubmit(noteForm)" id="noteForm">
         <div class="field">
             <label class="label">
                 Title 
@@ -27,8 +27,7 @@
                 Tags
             </label>
             <div class="check-group">
-              <tr *ngFor="let tag of tags">
-                <label class="checkbox">
+                <label *ngFor="let tag of tags" class="checkbox">
                   <input class="checkbox__input" type="checkbox">
                   
                   <svg class="checkbox__icon" viewBox="0 0 22 22">
@@ -38,7 +37,6 @@
               
                   <span class="checkbox__label">{{tag.title}}</span>
                 </label>
-              </tr>
             </div>
         </div>
 
