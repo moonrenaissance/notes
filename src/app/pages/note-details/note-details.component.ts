@@ -29,6 +29,7 @@ export class NoteDetailsComponent implements OnInit{
     this.route.paramMap.subscribe({
       next: (params) =>{
         const id = params.get('id');
+        const form = document.getElementById('noteForm');
 
         if(id){
           this.noteService.getNote(id)
@@ -37,6 +38,15 @@ export class NoteDetailsComponent implements OnInit{
               this.noteDetails = response;
             }
           });
+          console.log('edit')
+          if(form){
+
+          }
+        }else{
+          console.log('add')
+          if(form){
+
+          }
         }
       }
     })
