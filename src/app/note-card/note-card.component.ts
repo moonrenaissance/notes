@@ -7,7 +7,7 @@ import { TagsService } from 'src/app/services/tags.service';
   templateUrl: './note-card.component.html',
   styleUrls: ['./note-card.component.scss']
 })
-export class NoteCardComponent implements OnInit{
+export class NoteCardComponent implements OnInit {
 
   @Input('title') title: string;
   @Input('body') body: string;
@@ -26,7 +26,6 @@ export class NoteCardComponent implements OnInit{
   ngAfterViewInit() {
 
     let style = window.getComputedStyle(this.bodyText.nativeElement);
-    //let viewableHeight = parseInt(style.getPropertyValue("height"), 10);
 
     if (this.noteP.nativeElement.scrollHeight > this.bodyText.nativeElement.clientHeight) {
       this.renderer.setStyle(this.truncator.nativeElement, 'display', 'block');
@@ -39,30 +38,30 @@ export class NoteCardComponent implements OnInit{
 
 
   ngOnInit() {
-    this.notesService.getNote(this.noteId)
-    .subscribe({
-      next: (note) =>{
+      this.notesService.getNote(this.noteId)
+      .subscribe({
+        next: (note) =>{
 
-        note.notesTags.forEach(noteTag => {
+          note.notesTags.forEach(noteTag => {
 
-          this.tagsServise.getTag(noteTag.tagId)
-          .subscribe({
-            next: (tag) =>{
-              this.tagsTitles.push(tag.title);
-              console.log(tag);
+            this.tagsServise.getTag(noteTag.tagId)
+            .subscribe({
+              next: (tag) =>{
+                this.tagsTitles.push(tag.title);
+                console.log(tag);
 
-            },
+              },
 
-            error: (response)=>{
-              console.log(response);
-            }
+              error: (response)=>{
+                console.log(response);
+              }
+            });
           });
-        });
 
-      },
-      error: (response)=>{
-        console.log(response);
-      }
-    });
-  }
+        },
+        error: (response)=>{
+          console.log(response);
+        }
+      });
+    }
 }
