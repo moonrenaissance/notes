@@ -85,4 +85,13 @@
 
     padding: 25px;
     max-height: 90px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+  
+.note-card-tags span {
+    border-radius: 5px;
+    margin-right: 5px;
+    padding: 3px 8px;
 }

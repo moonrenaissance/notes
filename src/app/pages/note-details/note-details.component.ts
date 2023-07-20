@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Note } from 'src/app/models/note.model';
 import { Tag } from 'src/app/models/tag.model';
@@ -22,7 +21,7 @@ export class NoteDetailsComponent implements OnInit{
   }
 
   tags: Tag[] = [];
-  type: boolean = false;
+  typePage: boolean = false;
 
   constructor(private noteService: NotesService,
               private tagService: TagsService ,
@@ -42,8 +41,7 @@ export class NoteDetailsComponent implements OnInit{
 
             }
           });
-          this.type = true;
-        }else{
+          this.typePage = true;
         }
       }
     })
@@ -65,8 +63,10 @@ export class NoteDetailsComponent implements OnInit{
         console.log(response);
       }
     });
+
   }
 
+<<<<<<< HEAD
 
   getNoteTags() : void
   {
@@ -77,6 +77,10 @@ export class NoteDetailsComponent implements OnInit{
 
   onSubmit(form: NgForm) {
     if(this.type)
+=======
+  onSubmit() {
+    if(this.typePage)
+>>>>>>> 3393af17cf037c8b17086d756e7ac2d971a60ca3
       this.updateNote();
     else
       this.addNote();
@@ -90,7 +94,7 @@ export class NoteDetailsComponent implements OnInit{
     this.noteService.updateNote(this.noteDetails.id, this.noteDetails)
     .subscribe({
       next: (response) => {
-        console.log(this.noteDetails.title);
+        console.log(response);
         this.router.navigateByUrl('/');
       }
     })

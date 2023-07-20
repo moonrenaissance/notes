@@ -1,21 +1,24 @@
 <div #container class="note-card-container">
-    <div class="note-card-content">
-        <h1 class="note-card-title">
-            {{title}}
-        </h1>
-        <div #bodyText class="note-card-body">
-            <p #noteP>
-               {{body}}
-            </p>
-            <div #truncator class="fade-out-truncation"></div>
+    <div class="clickable-area" [routerLink]="['notes', 'id', noteId]">
+        <div class="note-card-content">
+            <h1 class="note-card-title">
+                {{title}}
+            </h1>
+            <div #bodyText class="note-card-body">
+                <p #noteP>
+                {{body}}
+                </p>
+
+                <div #truncator class="fade-out-truncation"></div>
+            </div>
+        </div>
+
+        <div class="note-card-tags">            
+            <span *ngFor = "let tag of selectedTags" [style.background-color]="tag.color">
+                {{tag.title}}
+            </span>
         </div>
     </div>
-        <div class="note-card-tags">            
-            <rt *ngFor = "let title of tagsTitles">
-                <span>
-                    {{title}}
-                </span>
-            </rt>
-        </div>
-    <div class="delete-button"></div>
+
+    <div class="delete-button" (click)="deleteNote(noteId)"></div>
 </div>

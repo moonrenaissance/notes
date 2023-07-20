@@ -1,6 +1,8 @@
 import { Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { NotesService } from 'src/app/services/notes.service';
 import { TagsService } from 'src/app/services/tags.service';
+import { Router } from '@angular/router';
+import { Tag } from '../models/tag.model';
 
 @Component({
   selector: 'app-note-card',
@@ -17,11 +19,12 @@ export class NoteCardComponent implements OnInit{
   @ViewChild('bodyText') bodyText: ElementRef<HTMLElement>;
   @ViewChild('noteP') noteP: ElementRef<HTMLElement>;
 
-  tagsTitles: string[] = [];
+  selectedTags: Tag[] = [];
 
   constructor(private renderer: Renderer2,
               private notesService: NotesService,
-              private tagsServise: TagsService) {}
+              private tagsServise: TagsService,
+              private router: Router) {}
 
   ngAfterViewInit() {
 
@@ -33,7 +36,6 @@ export class NoteCardComponent implements OnInit{
     else {
       this.renderer.setStyle(this.truncator.nativeElement, 'display', 'none');
     }
-
   }
 
 
@@ -47,9 +49,7 @@ export class NoteCardComponent implements OnInit{
           this.tagsServise.getTag(noteTag.tagId)
           .subscribe({
             next: (tag) =>{
-              this.tagsTitles.push(tag.title);
-              console.log(tag);
-
+              this.selectedTags.push(tag);
             },
 
             error: (response)=>{
@@ -63,5 +63,17 @@ export class NoteCardComponent implements OnInit{
         console.log(response);
       }
     });
+  }
+
+  deleteNote(id: string){
+    this.notesService.deleteNote(id)
+    .subscribe({
+      next: (response) =>{
+        //reload
+        window.location.reload();
+        //not work =>
+        //this.router.navigateByUrl('/');
+      }
+    })
   }
 }
