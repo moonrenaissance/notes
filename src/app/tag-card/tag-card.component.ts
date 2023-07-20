@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './tag-card.component.html',
   styleUrls: ['./tag-card.component.scss']
 })
+
 export class TagCardComponent {
 
 }

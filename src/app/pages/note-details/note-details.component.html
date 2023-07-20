@@ -32,10 +32,10 @@
                   
                   <svg class="checkbox__icon" viewBox="0 0 22 22">
                     <rect width="21" height="21" x=".5" y=".5" fill="#FFF" stroke="black" rx="3" />
-                    <path class="tick" stroke="#fe76c2" fill="none" stroke-linecap="round" stroke-width="4" d="M4 10l5 5 9-9" />
+                    <path class="tick" stroke="#37c7f2" fill="none" stroke-linecap="round" stroke-width="4" d="M4 10l5 5 9-9" />
                   </svg>
               
-                  <span class="checkbox__label">{{tag.title}}</span>
+                  <span class="checkbox__label" [style.background-color]="tag.color">{{tag.title}}</span>
                 </label>
             </div>
         </div>
