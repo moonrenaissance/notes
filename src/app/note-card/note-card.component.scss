@@ -83,7 +83,7 @@
 .note-card-tags {
     position: relative;
 
-    padding: 25px;
+    padding: 16px;
     max-height: 90px;
     display: flex;
     flex-wrap: wrap;
@@ -94,4 +94,10 @@
     border-radius: 5px;
     margin-right: 5px;
     padding: 3px 8px;
+
+    color: white;
+    text-shadow: 0.8px 0 0.8px #000, 
+    0 0.8px 0.8px #000, 
+    -0.8px 0 0.8px #000, 
+    0 -0.8px 0.8px #000;
 }

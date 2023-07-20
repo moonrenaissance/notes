@@ -1,0 +1,36 @@
+@import '../../../main-styles.scss';
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+
+    max-width: 500px;
+
+    margin: auto;
+    padding-top: 50px;
+    
+}
+
+.tags-list {
+    margin-top: 35px;
+    margin-bottom: 70px;
+}
+
+app-tag-card {
+    display: block;
+    margin-bottom: 25px;
+}
+
+.floating-add-button {
+    position: fixed;
+    bottom: 0;
+    width: 500px;
+    border-radius: 4;
+
+    box-shadow: 0px 0px 15px 5px rgba($purple, 0.4);
+
+    height: 52px;
+    font-size: 24px;
+
+    margin-bottom: 3px;
+}

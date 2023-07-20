@@ -25,10 +25,12 @@ app-note-card {
     position: fixed;
     bottom: 0;
     width: 500px;
-    border-radius: 0;
+    border-radius: 4;
 
     box-shadow: 0px 0px 15px 5px rgba($purple, 0.4);
 
     height: 52px;
     font-size: 24px;
+
+    margin-bottom: 3px;
 }

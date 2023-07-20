@@ -10,12 +10,16 @@ import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
 import { NoteCardComponent } from './note-card/note-card.component';
 import { NoteDetailsComponent } from './pages/note-details/note-details.component';
 import { HttpClientModule } from '@angular/common/http';
+import { TagCardComponent } from './tag-card/tag-card.component';
+import { TagsComponent } from './pages/tags/tags.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NotesComponent,
+    TagsComponent,
+    TagCardComponent,
     MainLayoutComponent,
     NoteCardComponent,
     NoteDetailsComponent,

@@ -52,6 +52,14 @@ input, textarea {
   
 .checkbox__label {
     margin-left: 0.5em;
+    padding: 4px;
+    border-radius: 5px;
+
+    color: white;
+    text-shadow: 0.8px 0 0.8px #000, 
+    0 0.8px 0.8px #000, 
+    -0.8px 0 0.8px #000, 
+    0 -0.8px 0.8px #000;
 }
   
 .checkbox__input:checked + .checkbox__icon .tick {
