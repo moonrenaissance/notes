@@ -17,7 +17,7 @@ export class NotesComponent implements OnInit{
   tags: Tag[] = [];
   filteredNotes: Note[] = new Array<Note>();
 
-  constructor(private notesService: NotesService, private tagsService: TagsService) {}
+  constructor(private notesService: NotesService, private tagsService: TagsService, private router: Router) {}
 
   ngOnInit() {
     this.notesService.getAllNotes()
@@ -42,6 +42,10 @@ export class NotesComponent implements OnInit{
         console.log(response);
       }
     });
+  }
+
+  Add() {
+      this.router.navigateByUrl('notes/list/new');
   }
 
   filter(query: string){

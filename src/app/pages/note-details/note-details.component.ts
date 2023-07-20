@@ -105,7 +105,7 @@ export class NoteDetailsComponent implements OnInit{
   }
 
   Cancel() {
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('notes/list');
   }
 
 
@@ -114,7 +114,7 @@ export class NoteDetailsComponent implements OnInit{
     .subscribe({
       next: (response) => {
         console.log(response);
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('notes/list');
       }
     })
   }
@@ -126,7 +126,7 @@ export class NoteDetailsComponent implements OnInit{
     .subscribe({
       next: (note)=>{
         console.log(note);
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('notes/list');
       }
     });
   }

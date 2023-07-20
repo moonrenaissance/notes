@@ -10,9 +10,9 @@ import { TagDetailsComponent } from './pages/tag-details/tag-details.component';
 //Нужно создать пути для существующих тегов и напоминаний
 const routes: Routes = [
   { path: '', component: MainLayoutComponent, children: [
-    { path: '', component: NotesComponent },
-    { path: ':notes/new', component: NoteDetailsComponent },
-    { path: ':notes/id/:id', component: NoteDetailsComponent },
+    { path: ':notes/list', component: NotesComponent },
+    { path: ':notes/list/new', component: NoteDetailsComponent },
+    { path: ':notes/list/id/:id', component: NoteDetailsComponent },
     { path: ':notes/tags', component: TagsComponent },
     { path: ':notes/tags/new', component: TagDetailsComponent },
     { path: ':notes/reminders', component: RemindersComponent }
