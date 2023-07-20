@@ -38,7 +38,6 @@ export class NoteCardComponent implements OnInit{
     }
   }
 
-
   ngOnInit() {
     this.notesService.getNote(this.noteId)
     .subscribe({
@@ -51,13 +50,11 @@ export class NoteCardComponent implements OnInit{
             next: (tag) =>{
               this.selectedTags.push(tag);
             },
-
             error: (response)=>{
               console.log(response);
             }
           });
         });
-
       },
       error: (response)=>{
         console.log(response);

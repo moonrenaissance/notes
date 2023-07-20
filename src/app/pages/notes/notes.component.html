@@ -3,7 +3,7 @@
     <div class="search-bar-container">
         <div class="field">
             <p class="control has-icons-left">
-                <input class="input is-rounded" type="text" placeholder="Search For">
+                <input class="input is-rounded" type="text" (keyup)=filter($any($event.target).value) placeholder="Search For">
                 <span class="icon is-small is-left">
                     <i class="fas fa-search"></i>
                 </span>
@@ -12,7 +12,7 @@
     </div>
 
     <div class="notes-list">
-            <app-note-card *ngFor = "let note of notes" 
+            <app-note-card *ngFor = "let note of filteredNotes" 
                 title="{{note.title}}" body="{{note.description}}" noteId="{{note.id}}"></app-note-card>
     </div>
     
