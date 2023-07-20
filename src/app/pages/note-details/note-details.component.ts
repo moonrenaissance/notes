@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Note } from 'src/app/models/note.model';
+import { NoteTag } from 'src/app/models/notetag.model';
 import { Tag } from 'src/app/models/tag.model';
 import { NotesService } from 'src/app/services/notes.service';
 import { TagsService } from 'src/app/services/tags.service';
@@ -13,7 +14,7 @@ import { TagsService } from 'src/app/services/tags.service';
 export class NoteDetailsComponent implements OnInit{
 
   noteDetails: Note = {
-    id: '',
+    id: '00000000-0000-0000-0000-000000000000',
     title: '',
     description: '',
     date: new Date(0, 0, 0, 0, 0),
@@ -27,6 +28,7 @@ export class NoteDetailsComponent implements OnInit{
               private tagService: TagsService ,
               private router: Router,
               private route: ActivatedRoute) {}
+
 
   ngOnInit() {
     this.route.paramMap.subscribe({
@@ -56,7 +58,6 @@ export class NoteDetailsComponent implements OnInit{
     this.tagService.getAllTags()
     .subscribe({
       next: (tags) =>{
-        console.log(tags);
         this.tags = tags;
       },
       error: (response)=>{
@@ -66,29 +67,47 @@ export class NoteDetailsComponent implements OnInit{
 
   }
 
-<<<<<<< HEAD
 
-  getNoteTags() : void
-  {
-
-    
-  }
-
-
-  onSubmit(form: NgForm) {
-    if(this.type)
-=======
   onSubmit() {
+    this.noteDetails.notesTags = [];
+    this.tags.forEach(tag =>{
+      var element = <HTMLInputElement> document.getElementById(tag.id);
+      if(element.checked)
+      {
+        var noteTag: NoteTag ={
+          noteId: this.noteDetails.id,
+          tagId: tag.id
+        }
+        this.noteDetails.notesTags.push(noteTag);
+      }
+    });
+    console.log(this.noteDetails);
     if(this.typePage)
->>>>>>> 3393af17cf037c8b17086d756e7ac2d971a60ca3
       this.updateNote();
     else
       this.addNote();
   }
 
+
+  isChecked(tag: Tag): boolean
+  {
+    let isChecked: boolean = false;
+
+    this.noteDetails.notesTags.forEach(noteTag =>{
+      if(noteTag.tagId == tag.id)
+      {
+        isChecked = true;
+      }
+      
+    }); 
+
+    return isChecked;
+  }
+
   Cancel() {
     this.router.navigateByUrl('/');
   }
+
 
   updateNote(){
     this.noteService.updateNote(this.noteDetails.id, this.noteDetails)
@@ -99,6 +118,7 @@ export class NoteDetailsComponent implements OnInit{
       }
     })
   }
+
 
   addNote(){
     console.log(this.noteDetails);

@@ -19,7 +19,8 @@ namespace Web_API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllTags()
         {
-            var tags = await _fullStackDbContext.Tags.ToListAsync();
+            var tags = await _fullStackDbContext.Tags.Include(
+                t => t.NotesTags).ToListAsync();
 
             return Ok(tags);
         }

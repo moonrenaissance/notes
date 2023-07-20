@@ -43,7 +43,7 @@ namespace Web_API.Controllers
                         return NotFound();
                     }
 
-                    NoteTag.Tag = tag;
+                    NoteTag.Tag = tag;                    
                 }
             }
 

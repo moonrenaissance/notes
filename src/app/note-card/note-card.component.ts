@@ -69,10 +69,7 @@ export class NoteCardComponent implements OnInit{
     this.notesService.deleteNote(id)
     .subscribe({
       next: (response) =>{
-        //reload
         window.location.reload();
-        //not work =>
-        //this.router.navigateByUrl('/');
       }
     })
   }
