@@ -34,3 +34,78 @@ app-note-card {
 
     margin-bottom: 3px;
 }
+
+.find_label{
+    margin-right: 20px;
+}
+
+.checkbox {
+    cursor: pointer;
+    
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    margin-bottom: 13px;
+}
+  
+.checkbox__input {
+    position: absolute;
+    
+    width: 1.375em;
+    height: 1.375em;
+    
+    opacity: 0;
+
+    cursor: pointer;
+}
+
+.checkbox__icon {
+    width: 1.375em;
+    height: 1.375em;
+
+    flex-shrink: 0;
+
+    overflow: visible;
+}
+  
+.checkbox__icon .tick {
+    stroke-dasharray: 20px;
+    
+    stroke-dashoffset: 20px;
+    
+    transition: stroke-dashoffset 0.2s ease-out;
+}
+  
+.checkbox__label {
+    margin-left: 0.2em;
+    padding: 4px;
+    border-radius: 5px;
+}
+  
+.checkbox__input:checked + .checkbox__icon .tick {
+    stroke-dashoffset: 0;
+}
+  
+  
+.check-group {
+    background: #fff;
+    
+    padding: 1.5rem;
+    
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 10, 0.2);
+    
+    counter-reset: total;
+    counter-reset: checked;
+
+    max-width: 500px;
+    margin-top: 5px;
+    height: 15px;
+
+    display: flex;
+    align-items: center;
+}
+  
+.check-group > * + * {
+    margin-top: 0.75rem;
+}

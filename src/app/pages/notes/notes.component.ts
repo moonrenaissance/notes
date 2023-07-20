@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Note } from 'src/app/models/note.model';
+import { Tag } from 'src/app/models/tag.model';
 import { NotesService } from 'src/app/services/notes.service';
 import { TagsService } from 'src/app/services/tags.service';
 
@@ -12,6 +13,7 @@ import { TagsService } from 'src/app/services/tags.service';
 export class NotesComponent implements OnInit{
 
   notes: Note[] = [];
+  tags: Tag[] = [];
   filteredNotes: Note[] = new Array<Note>();
 
   constructor(private notesService: NotesService, private tagsService: TagsService) {}
@@ -28,16 +30,36 @@ export class NotesComponent implements OnInit{
         console.log(response);
       }
     });
+
+    this.tagsService.getAllTags()
+    .subscribe({
+      next: (tag) =>{
+        console.log(tag);
+        this.tags = tag;
+      },
+      error: (response)=>{
+        console.log(response);
+      }
+    });
   }
 
   filter(query: string){
+    const chbxTitle = document.getElementById("findTitle") as HTMLInputElement;
+    const chbxDesc = document.getElementById("findDesc") as HTMLInputElement;
+    const chbxTags = document.getElementById("findTags") as HTMLInputElement;
+
+    if((!chbxTitle.checked && !chbxDesc.checked && !chbxTags.checked) || query == ""){
+      this.filteredNotes = this.notes;
+      return;
+    }
+
     let allResults: Note[] = new Array<Note>();
     query = query.toLowerCase().trim();
 
     let terms: string[] = query.split(' ');
     terms = this.removeDuplications(terms);
     terms.forEach(term => {
-      let results: Note[] = this.relevantNotes(term);
+      let results: Note[] = this.relevantNotes(term, chbxTitle.checked, chbxDesc.checked, chbxTags.checked);
       allResults = [...allResults, ...results]
     });
 
@@ -51,34 +73,26 @@ export class NotesComponent implements OnInit{
     return Array.from(uniqueResults);
   }
 
-  relevantNotes(query: string): Array<Note>{
+  relevantNotes(query: string, findTitle: boolean, findDesc:boolean, findTags: boolean): Array<Note>{
     query = query.toLowerCase().trim();
+
     let relevantNotes = this.notes.filter(note =>{
-      if((note.description && note.description.toLowerCase().includes(query)) || note.title.toLowerCase().includes(query)){
+      if((findDesc && note.description && note.description.toLowerCase().includes(query)) || (findTitle && note.title.toLowerCase().includes(query))){
         return true;
       }
 
-      //need fix => Когда вызывается метод this.tagsService.getTag(noteTag.tagId).subscribe()
-      //он запускает асинхронную операцию получения тега с сервера.
-      //Вместо того, чтобы блокировать выполнение кода и ожидать завершения операции, код продолжает выполняться дальше. 
-      //Поэтому сначала выводится 2, а затем, после завершения асинхронной операции, выводится 1, если найден соответствующий тег.
-      // note.notesTags.forEach(noteTag => {
-      //   this.tagsService.getTag(noteTag.tagId)
-      //   .subscribe({
-      //     next: (tag) =>{
-      //       if(tag.title.toLowerCase().includes(query)){
-      //         console.log('1');
-      //       }
-      //     },
-      //     error: (response)=>{
-      //       console.log(response);
-      //     }
-      //   });
-      // });
-      // console.log('2');
+      let isTagFind: boolean = false;
+      if(findTags){
+        note.notesTags.forEach(noteTag => {
+          if(this.tags.find(tag => tag.id === noteTag.tagId)?.title.toLowerCase().includes(query)){
+            isTagFind = true;
+            return;
+          }
+        });
+      }
 
-      return false;
-    })
+      return isTagFind;
+    });
 
     return relevantNotes;
   }
