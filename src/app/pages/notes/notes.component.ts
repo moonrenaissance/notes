@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Note } from 'src/app/models/note.model';
 import { NotesService } from 'src/app/services/notes.service';
 
@@ -12,7 +13,11 @@ export class NotesComponent implements OnInit{
 
   notes: Note[] = [];
 
-  constructor(private notesService: NotesService) {}
+  constructor(private notesService: NotesService, private router: Router) {}
+
+  Add() {
+    this.router.navigateByUrl('notes/new');
+  }
 
   ngOnInit() {
     this.notesService.getAllNotes()

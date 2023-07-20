@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tags',
@@ -8,4 +9,9 @@ import { Component } from '@angular/core';
 
 export class TagsComponent {
 
+  constructor(private router: Router) {}
+
+  Add() {
+    this.router.navigateByUrl('notes/tags/new');
+  }
 }

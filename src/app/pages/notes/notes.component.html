@@ -16,7 +16,7 @@
                 title="{{note.title}}" body="{{note.description}}" noteId="{{note.id}}"></app-note-card>
     </div>
     
-    <button class="button floating-add-button is-primary" routerLink="notes/new">
+    <button class="button floating-add-button is-primary" (click)="Add()">
         + Add New Note
     </button>
 </div>
