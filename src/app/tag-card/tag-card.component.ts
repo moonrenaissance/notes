@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { TagsService } from '../services/tags.service';
 
@@ -14,6 +14,8 @@ export class TagCardComponent {
   @Input('color') color :string;  
   @Input('tagId') tagId: string;
 
+  @Output('delete') deleteEvent: EventEmitter<void> = new EventEmitter<void>();
+
   constructor(private router: Router,
               private tagService: TagsService){}
 
@@ -27,7 +29,7 @@ export class TagCardComponent {
     this.tagService.deleteTag(id)
     .subscribe({
       next: (response) =>{
-        window.location.reload();
+        this.deleteEvent.emit();
       }
     })
   }

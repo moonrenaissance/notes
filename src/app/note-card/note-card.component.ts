@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
 import { NotesService } from 'src/app/services/notes.service';
 import { TagsService } from 'src/app/services/tags.service';
 import { Router } from '@angular/router';
@@ -14,6 +14,8 @@ export class NoteCardComponent implements OnInit{
   @Input('title') title: string;
   @Input('body') body: string;
   @Input('noteId') noteId: string;
+
+  @Output('delete') deleteEvent: EventEmitter<void> = new EventEmitter<void>();
 
   @ViewChild('truncator') truncator: ElementRef<HTMLElement>;
   @ViewChild('bodyText') bodyText: ElementRef<HTMLElement>;
@@ -66,7 +68,7 @@ export class NoteCardComponent implements OnInit{
     this.notesService.deleteNote(id)
     .subscribe({
       next: (response) =>{
-        window.location.reload();
+        this.deleteEvent.emit();
       }
     })
   }
