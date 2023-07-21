@@ -20,14 +20,14 @@ export class TagCardComponent {
   editTag()
   {
     this.router.navigateByUrl('notes/tags/id/' + this.tagId);
-    console.log('work');
   }
 
   deleteTag(id: string){
     this.tagService.deleteTag(id)
     .subscribe({
       next: (response) =>{
-        window.location.reload();
+        
+        //window.location.reload();        
       }
     })
   }

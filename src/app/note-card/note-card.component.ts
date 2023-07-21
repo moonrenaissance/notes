@@ -42,9 +42,7 @@ export class NoteCardComponent implements OnInit{
     this.notesService.getNote(this.noteId)
     .subscribe({
       next: (note) =>{
-
         note.notesTags.forEach(noteTag => {
-
           this.tagsServise.getTag(noteTag.tagId)
           .subscribe({
             next: (tag) =>{
