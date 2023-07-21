@@ -12,6 +12,7 @@ import { NoteDetailsComponent } from './pages/note-details/note-details.componen
 import { HttpClientModule } from '@angular/common/http';
 import { TagCardComponent } from './tag-card/tag-card.component';
 import { TagsComponent } from './pages/tags/tags.component';
+import { TagDetailsComponent } from './pages/tag-details/tag-details.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { TagsComponent } from './pages/tags/tags.component';
     MainLayoutComponent,
     NoteCardComponent,
     NoteDetailsComponent,
+    TagDetailsComponent,
   ],
   imports: [
     BrowserModule,

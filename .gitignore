@@ -27,6 +27,7 @@ yarn-error.log
 !.vscode/launch.json
 !.vscode/extensions.json
 .history/*
+.gitignore
 
 # Miscellaneous
 /.angular/cache
@@ -43,4 +44,6 @@ Thumbs.db
 
 
 .vs
-.API/Web-API/Web-API/bin/Debug/*
+API/Web-API/Web-API/bin/
+API/Web-API/Web-API/obj/
+API/Web-API/Web-API/appsettings.json

@@ -1,0 +1,35 @@
+<div class="form-container">
+    <form #tagForm="ngForm">
+        <div class="field">
+            <label class="label">Title</label>
+            <div class="control">
+                <input type="text" name="title" required class="input">
+            </div>
+        </div>
+
+        <br>
+
+        <div class="field">
+            <label class="label">Color</label>
+            <div class="control">
+                <input type="color">
+            </div>
+        </div>
+
+        <br>
+
+        <div class="field is-grouped is-pulled-right">
+            <div class="control">
+                <button class="button is-text" type="button" (click)="Cancel()">
+                    Cancel
+                </button>
+            </div>
+            <div class="control">
+                <button class="button is-success" type="submit">
+                    Save
+                </button>
+            </div>
+        </div>
+
+    </form>
+</div>
