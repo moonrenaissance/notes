@@ -24,8 +24,19 @@ export class NotesComponent implements OnInit{
     .subscribe({
       next: (notes) =>{
         console.log(notes);
-        this.notes = notes.filter(n=> n.date.toString() == '1899-12-30T19:57:27');
-        console.log(new Date(0,0,0,0,0));
+        this.notes = notes;
+        this.filteredNotes = notes;
+      },
+      error: (response)=>{
+        console.log(response);
+      }
+    });
+
+    this.tagsService.getAllTags()
+    .subscribe({
+      next: (tag) =>{
+        console.log(tag);
+        this.tags = tag;
       },
       error: (response)=>{
         console.log(response);
