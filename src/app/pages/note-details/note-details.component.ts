@@ -81,7 +81,7 @@ export class NoteDetailsComponent implements OnInit{
         this.noteDetails.notesTags.push(noteTag);
       }
     });
-    console.log(this.noteDetails);
+    
     if(this.typePage)
       this.updateNote();
     else

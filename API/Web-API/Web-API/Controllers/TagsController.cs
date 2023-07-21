@@ -20,7 +20,7 @@ namespace Web_API.Controllers
         public async Task<IActionResult> GetAllTags()
         {
             var tags = await _fullStackDbContext.Tags.Include(
-                t => t.NotesTags).ToListAsync();
+                t => t.NotesTags).OrderBy(t=> t.Title).ToListAsync();
 
             return Ok(tags);
         }

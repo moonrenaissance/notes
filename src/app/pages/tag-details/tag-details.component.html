@@ -1,9 +1,9 @@
 <div class="form-container">
-    <form #tagForm="ngForm">
+    <form #tagForm="ngForm" (ngSubmit)="onSubmit()">
         <div class="field">
             <label class="label">Title</label>
             <div class="control">
-                <input type="text" name="title" required class="input">
+                <input type="text" name="title" [(ngModel)]="tagDetails.title" required class="input">
             </div>
         </div>
 
@@ -12,7 +12,7 @@
         <div class="field">
             <label class="label">Color</label>
             <div class="control">
-                <input type="color">
+                <input id="colorField" type="color" value="{{tagDetails.color}}">
             </div>
         </div>
 

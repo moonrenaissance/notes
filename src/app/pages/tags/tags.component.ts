@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { TagsService } from 'src/app/services/tags.service';
+import { Tag } from 'src/app/models/tag.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,10 +9,25 @@ import { Router } from '@angular/router';
   styleUrls: ['./tags.component.scss']
 })
 
-export class TagsComponent {
+export class TagsComponent implements OnInit{
 
-  constructor(private router: Router) {}
+  constructor(private tagsSeervice: TagsService,
+              private router: Router) {}
 
+  tags: Tag[]
+
+  ngOnInit() {
+    this.tagsSeervice.getAllTags()
+    .subscribe({
+      next: (tags) =>{
+        this.tags = tags;
+      },
+      error: (response)=>{
+        console.log(response);
+      }
+    });
+  }
+  
   Add() {
     this.router.navigateByUrl('notes/tags/new');
   }
