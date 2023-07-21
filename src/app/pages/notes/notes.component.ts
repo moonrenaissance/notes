@@ -53,16 +53,16 @@ export class NotesComponent implements OnInit{
   }
 
   filter(query: string){
+    if(query == "" || this.notes == null){
+      this.filteredNotes = this.notes;
+      return;
+    }
+
     this.isLoading = true;
     const chbxTitle = document.getElementById("findTitle") as HTMLInputElement;
     const chbxDesc = document.getElementById("findDesc") as HTMLInputElement;
     const chbxTags = document.getElementById("findTags") as HTMLInputElement;
 
-    if(query == ""){
-      this.filteredNotes = this.notes;
-      this.isLoading = false;
-      return;
-    }
 
     let allResults: Note[] = new Array<Note>();
     query = query.toLowerCase().trim();
