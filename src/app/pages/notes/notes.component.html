@@ -42,6 +42,8 @@
         </label>
     </div>
 
+    <span class="loader" *ngIf="isLoading"></span>
+
     <div class="notes-list">
             <app-note-card *ngFor = "let note of filteredNotes;" 
                 title="{{note.title}}" body="{{note.description}}" noteId="{{note.id}}"

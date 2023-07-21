@@ -16,16 +16,20 @@ export class NotesComponent implements OnInit{
   notes: Note[] = [];
   tags: Tag[] = [];
   filteredNotes: Note[] = new Array<Note>();
+  isLoading: boolean = false;
 
   constructor(private notesService: NotesService, private tagsService: TagsService, private router: Router) {}
 
   ngOnInit() {
+    this.isLoading = true;
+
     this.notesService.getAllNotes()
     .subscribe({
       next: (notes) =>{
         console.log(notes);
         this.notes = notes;
         this.filteredNotes = notes;
+        this.isLoading = false;
       },
       error: (response)=>{
         console.log(response);
@@ -49,12 +53,14 @@ export class NotesComponent implements OnInit{
   }
 
   filter(query: string){
+    this.isLoading = true;
     const chbxTitle = document.getElementById("findTitle") as HTMLInputElement;
     const chbxDesc = document.getElementById("findDesc") as HTMLInputElement;
     const chbxTags = document.getElementById("findTags") as HTMLInputElement;
 
     if(query == ""){
       this.filteredNotes = this.notes;
+      this.isLoading = false;
       return;
     }
 
@@ -68,6 +74,7 @@ export class NotesComponent implements OnInit{
       allResults = [...allResults, ...results]
     });
 
+    this.isLoading = false;
     this.filteredNotes = this.removeDuplications(allResults);
   }
 
