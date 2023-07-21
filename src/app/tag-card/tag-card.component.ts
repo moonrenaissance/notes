@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
 
 @Component({
   selector: 'app-tag-card',
@@ -7,5 +8,6 @@ import { Component } from '@angular/core';
 })
 
 export class TagCardComponent {
-
+  @Input('title') title :string;
+  @Input('color') color :string;
 }
