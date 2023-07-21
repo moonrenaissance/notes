@@ -37,7 +37,8 @@ export class TagsComponent implements OnInit{
 
   deleteTag(tag: Tag){
     let indexTag = this.tags.indexOf(tag);
-
-    this.tags.splice(indexTag, 1);
+    if(indexTag != -1){
+      this.tags.splice(indexTag, 1);
+    }
   }
 }
