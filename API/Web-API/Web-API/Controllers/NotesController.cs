@@ -21,7 +21,7 @@ namespace Web_API.Controllers
         public async Task<IActionResult> GetAllNotes()
         {
             var notes = await _fullStackDbContext.Notes.Include(
-                n => n.NotesTags).ToListAsync();
+                n => n.NotesTags).OrderBy(n => n.DateOfCreation).ToListAsync();
 
             return Ok(notes);
         }
@@ -30,6 +30,7 @@ namespace Web_API.Controllers
         public async Task<IActionResult> AddNotes([FromBody] Notes notesRequest)
         {
             notesRequest.Id = Guid.NewGuid();
+            notesRequest.DateOfCreation = DateTime.Now;
 
             if (notesRequest.NotesTags != null)
             {

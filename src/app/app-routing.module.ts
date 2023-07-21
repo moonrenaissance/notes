@@ -15,6 +15,7 @@ const routes: Routes = [
     { path: ':notes/list/id/:id', component: NoteDetailsComponent },
     { path: ':notes/tags', component: TagsComponent },
     { path: ':notes/tags/new', component: TagDetailsComponent },
+    { path: ':notes/tags/id/:id', component: TagDetailsComponent },
     { path: ':notes/reminders', component: RemindersComponent }
   ]}
 ];

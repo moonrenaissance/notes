@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -9,5 +10,14 @@ import { Component, Input } from '@angular/core';
 
 export class TagCardComponent {
   @Input('title') title :string;
-  @Input('color') color :string;
+  @Input('color') color :string;  
+  @Input('tagId') tagId: string;
+
+  constructor(private router: Router){}
+
+  editTag()
+  {
+    this.router.navigateByUrl('notes/tags/id/' + this.tagId);
+    console.log('work');
+  }
 }
