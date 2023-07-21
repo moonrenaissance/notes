@@ -1,9 +1,9 @@
 <div class="main-container">
 
     <div class="tags-list">
-        <app-tag-card *ngFor="let tag of tags" title="{{tag.title}}" tagId="{{tag.id}}">
-
-        </app-tag-card>
+        <app-tag-card *ngFor="let tag of tags; index as i"
+            title="{{tag.title}}" tagId="{{tag.id}}"
+            (delete)="deleteTag(i)"></app-tag-card>
     </div>
     
     <button class="button floating-add-button is-primary" (click)="Add()">

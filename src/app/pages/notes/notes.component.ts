@@ -53,7 +53,7 @@ export class NotesComponent implements OnInit{
     const chbxDesc = document.getElementById("findDesc") as HTMLInputElement;
     const chbxTags = document.getElementById("findTags") as HTMLInputElement;
 
-    if((!chbxTitle.checked && !chbxDesc.checked && !chbxTags.checked) || query == ""){
+    if(query == ""){
       this.filteredNotes = this.notes;
       return;
     }
@@ -79,6 +79,11 @@ export class NotesComponent implements OnInit{
   }
 
   relevantNotes(query: string, findTitle: boolean, findDesc:boolean, findTags: boolean): Array<Note>{
+    if(!findTitle && !findDesc && !findTags){
+      findTitle = true;
+      findDesc = true;
+      findTags = true;
+    }
     query = query.toLowerCase().trim();
 
     let relevantNotes = this.notes.filter(note =>{
@@ -100,5 +105,9 @@ export class NotesComponent implements OnInit{
     });
 
     return relevantNotes;
+  }
+  deleteNote(index: number){
+    this.notes.splice(index,1);
+    this.filteredNotes = this.notes;
   }
 }

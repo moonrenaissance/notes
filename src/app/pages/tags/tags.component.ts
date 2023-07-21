@@ -36,4 +36,8 @@ export class TagsComponent implements OnInit{
   Add() {
     this.router.navigateByUrl('notes/tags/new');
   }
+
+  deleteTag(index: number){
+    this.tags.splice(index,1);
+  }
 }
