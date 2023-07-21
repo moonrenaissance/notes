@@ -106,8 +106,12 @@ export class NotesComponent implements OnInit{
 
     return relevantNotes;
   }
-  deleteNote(index: number){
-    this.notes.splice(index,1);
-    this.filteredNotes = this.notes;
+
+  deleteNote(note: Note){
+    let indexNote = this.notes.indexOf(note);
+    let indexFilterNote = this.filteredNotes.indexOf(note);
+
+    this.notes.splice(indexNote, 1);
+    this.filteredNotes.splice(indexFilterNote, 1);
   }
 }

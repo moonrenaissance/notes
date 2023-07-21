@@ -43,9 +43,9 @@
     </div>
 
     <div class="notes-list">
-            <app-note-card *ngFor = "let note of filteredNotes; index as i" 
+            <app-note-card *ngFor = "let note of filteredNotes;" 
                 title="{{note.title}}" body="{{note.description}}" noteId="{{note.id}}"
-                (delete)="deleteNote(i)"></app-note-card>
+                (delete)="deleteNote(note)"></app-note-card>
     </div>
     
     <button class="button floating-add-button is-primary" (click)="Add()">
