@@ -15,28 +15,11 @@ input, textarea {
     }
 }
 
-//   -webkit-user-select: none; /* Запрещает выделение текста в браузерах, использующих WebKit, таких как Chrome и Safari */
-//   -moz-user-select: none; /* Запрещает выделение текста в браузерах, использующих Gecko, таких как Firefox */
-//   -ms-user-select: none; /* Запрещает выделение текста в браузерах, использующих Trident, таких как Internet Explorer */
-//   user-select: none; /* Запрещает выделение текста в стандартных браузерах */
-
-.label{
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
 .checkbox {
     cursor: pointer;
     
     display: flex;
     align-items: center;
-
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
 }
   
 .checkbox__input {

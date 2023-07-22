@@ -1,6 +1,6 @@
 @import '../../main-styles.scss';
 
-.note-card-container {
+.reminder-card-container {
     position: relative;
     background: white;
     border-radius: 5px;
@@ -20,16 +20,16 @@
         }
     }
 
-    .note-card-content {
+    .reminder-card-content {
         padding: 25px;
 
-        .note-card-title {
+        .reminder-card-title {
             font-size: 22px;
             font-weight: bold;
             color: $purple;
         }
 
-        .note-card-body {
+        .reminder-card-body {
             position: relative;
             
             color: #555;
@@ -80,7 +80,7 @@
     }
 }
 
-.note-card-tags {
+.reminder-card-tags {
     position: relative;
 
     padding: 16px;
@@ -89,15 +89,10 @@
     flex-wrap: wrap;
     margin-top: 10px;
 
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    
     opacity: 85%;
 }
   
-.note-card-tags span {
+.reminder-card-tags span {
     border-radius: 5px;
     margin-right: 5px;
     padding: 3px 8px;

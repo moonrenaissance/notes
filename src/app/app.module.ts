@@ -13,6 +13,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { TagCardComponent } from './tag-card/tag-card.component';
 import { TagsComponent } from './pages/tags/tags.component';
 import { TagDetailsComponent } from './pages/tag-details/tag-details.component';
+import { ReminderCardComponent } from './reminder-card/reminder-card.component';
+import { ReminderDetailsComponent } from './pages/reminder-details/reminder-details.component';
+import { RemindersComponent } from './pages/reminders/reminders.component';
 
 
 @NgModule({
@@ -25,6 +28,9 @@ import { TagDetailsComponent } from './pages/tag-details/tag-details.component';
     NoteCardComponent,
     NoteDetailsComponent,
     TagDetailsComponent,
+    RemindersComponent,
+    ReminderCardComponent,
+    ReminderDetailsComponent,
   ],
   imports: [
     BrowserModule,
