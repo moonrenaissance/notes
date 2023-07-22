@@ -9,9 +9,17 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Web_API
 build_property.RootNamespace = Web_API
+<<<<<<< HEAD
 build_property.ProjectDir = X:\Dev\consom_practise\notes\API\Web-API\Web-API\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = X:\Dev\consom_practise\notes\API\Web-API\Web-API
+=======
+build_property.ProjectDir = c:\Users\777\Desktop\final\notes\API\Web-API\Web-API\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = c:\Users\777\Desktop\final\notes\API\Web-API\Web-API
+>>>>>>> 69cfe65c18785733218eadf12ee1f2a2e493fc1e
 build_property._RazorSourceGeneratorDebug = 

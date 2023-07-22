@@ -15,29 +15,30 @@ export class TagsComponent implements OnInit{
               private router: Router) {}
 
   tags: Tag[]
+  isLoading: boolean = false;
 
   ngOnInit() {
+    this.isLoading = true;
     this.tagsSeervice.getAllTags()
     .subscribe({
       next: (tags) =>{
         this.tags = tags;
+        this.isLoading = false;
       },
       error: (response)=>{
         console.log(response);
       }
     });
   }
-  
-  ngOnChanges()
-  {
-    
-  }
 
   Add() {
     this.router.navigateByUrl('notes/tags/new');
   }
 
-  deleteTag(index: number){
-    this.tags.splice(index,1);
+  deleteTag(tag: Tag){
+    let indexTag = this.tags.indexOf(tag);
+    if(indexTag != -1){
+      this.tags.splice(indexTag, 1);
+    }
   }
 }
