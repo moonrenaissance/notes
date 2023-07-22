@@ -36,6 +36,7 @@
 
             max-height: 80px;
             overflow-x: auto;
+            word-break: break-all;
 
             .fade-out-truncation {
                 position: absolute;
@@ -92,6 +93,12 @@
     max-height: 90px;
     display: flex;
     flex-wrap: wrap;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
 }
   
 .note-card-tags span {
