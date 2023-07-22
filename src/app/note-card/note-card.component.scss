@@ -88,6 +88,11 @@
     display: flex;
     flex-wrap: wrap;
     margin-top: 10px;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
   
 .note-card-tags span {

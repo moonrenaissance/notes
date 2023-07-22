@@ -70,4 +70,8 @@ export class NoteCardComponent implements OnInit{
       }
     })
   }
+
+  goTag(id: string){
+    this.router.navigateByUrl('notes/tags/id/' +id);
+  }
 }
