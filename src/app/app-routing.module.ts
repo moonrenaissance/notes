@@ -6,7 +6,9 @@ import { NoteDetailsComponent } from './pages/note-details/note-details.componen
 import { TagsComponent } from './pages/tags/tags.component';
 import { RemindersComponent } from './pages/reminders/reminders.component';
 import { TagDetailsComponent } from './pages/tag-details/tag-details.component';
+import { ReminderDetailsComponent } from './pages/reminder-details/reminder-details.component';
 
+//Странная история с папкой pages
 //Нужно создать пути для существующих тегов и напоминаний
 const routes: Routes = [
   { path: '', component: MainLayoutComponent, children: [
@@ -16,7 +18,9 @@ const routes: Routes = [
     { path: ':notes/tags', component: TagsComponent },
     { path: ':notes/tags/new', component: TagDetailsComponent },
     { path: ':notes/tags/id/:id', component: TagDetailsComponent },
-    { path: ':notes/reminders', component: RemindersComponent }
+    { path: ':notes/reminders', component: RemindersComponent },
+    { path: ':notes/reminders/new', component: ReminderDetailsComponent },
+    { path: ':notes/reminders/id/:id', component: ReminderDetailsComponent }
   ]}
 ];
 

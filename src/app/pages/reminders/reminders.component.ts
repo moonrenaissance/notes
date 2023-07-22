@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reminders',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./reminders.component.scss']
 })
 export class RemindersComponent {
+
+  constructor(private router: Router) {}
+
+  Add() {
+    this.router.navigateByUrl('notes/reminders/new');
+  }
 
 }
