@@ -47,7 +47,8 @@
     <div class="notes-list">
             <app-note-card *ngFor = "let note of filteredNotes;" 
                 title="{{note.title}}" body="{{note.description}}" noteId="{{note.id}}"
-                (delete)="deleteNote(note)"></app-note-card>
+                (delete)="deleteNote(note)"
+                (findTag)="findTag($event, input)"></app-note-card>
     </div>
     
     <button class="button floating-add-button is-primary" (click)="Add()">

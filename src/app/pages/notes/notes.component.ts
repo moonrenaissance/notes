@@ -30,8 +30,8 @@ export class NotesComponent implements OnInit{
       next: (notes) =>{
         console.log(notes);
         this.notes = notes.filter(
-          r=> r.date.toString() == '1899-12-30T19:57:27');;
-        this.filteredNotes = notes;
+          r=> r.date.toString() == '1899-12-30T19:57:27');
+        this.filteredNotes = this.notes;
         this.isLoading = false;
       },
       error: (response)=>{
@@ -127,5 +127,14 @@ export class NotesComponent implements OnInit{
     if(indexFilterNote != -1){
       this.filteredNotes.splice(indexFilterNote, 1);
     }
+  }
+
+  findTag(title: string, input: HTMLInputElement){
+    if (input.value !== '') {
+      input.value += ' ';
+    }
+    input.value += title;
+
+    this.filter(input.value);
   }
 }

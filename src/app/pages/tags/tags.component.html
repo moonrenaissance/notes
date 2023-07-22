@@ -1,9 +1,20 @@
 <div class="main-container">
 
+    <div class="search-bar-container">
+        <div class="field">
+            <p class="control has-icons-left">
+                <input class="input is-rounded" type="text" #input (keyup)=filter(input.value) placeholder="Search For">
+                <span class="icon is-small is-left">
+                    <i class="fas fa-search"></i>
+                </span>
+            </p>
+        </div>
+    </div>
+
     <span class="loader" *ngIf="isLoading"></span>
 
     <div class="tags-list">
-        <app-tag-card *ngFor="let tag of tags;"
+        <app-tag-card *ngFor="let tag of filteredTags;"
             color="{{tag.color}}"
             title="{{tag.title}}" tagId="{{tag.id}}"
             (delete)="deleteTag(tag)"></app-tag-card>
