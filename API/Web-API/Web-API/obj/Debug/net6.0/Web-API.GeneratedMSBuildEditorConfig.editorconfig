@@ -10,6 +10,7 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Web_API
 build_property.RootNamespace = Web_API
 <<<<<<< HEAD
+<<<<<<< HEAD
 build_property.ProjectDir = E:\Projects\Notes-App\API\Web-API\Web-API\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
@@ -22,4 +23,11 @@ build_property.SupportLocalizedComponentNames =
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = C:\Users\777\Desktop\final\notes\API\Web-API\Web-API
 >>>>>>> 00664aec2e0cad2fce342d38d7facf2dd6bbbbf5
+=======
+build_property.ProjectDir = X:\Dev\consom_practise\notes\API\Web-API\Web-API\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = X:\Dev\consom_practise\notes\API\Web-API\Web-API
+>>>>>>> 00db794363eb36ae953c321cdd3dd5219afe4f12
 build_property._RazorSourceGeneratorDebug = 
