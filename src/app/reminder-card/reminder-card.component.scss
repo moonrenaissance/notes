@@ -36,6 +36,7 @@
 
             max-height: 80px;
             overflow: hidden;
+            margin-bottom: 10px;
 
             .fade-out-truncation {
                 position: absolute;
@@ -84,10 +85,9 @@
     position: relative;
 
     padding: 16px;
-    max-height: 100px;
+    height: auto;
     display: flex;
     flex-wrap: wrap;
-    margin-top: 10px;
     margin-bottom: 15px;
 }
   
@@ -112,5 +112,6 @@
     bottom: 56px;
     right: 12px;
 
+    margin-bottom: 10px;
     padding: 25px 25px 0 25px;
 }

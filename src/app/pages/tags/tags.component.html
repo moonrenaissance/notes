@@ -2,11 +2,11 @@
 
     <span class="loader" *ngIf="isLoading"></span>
 
-    <div class="tags-list">
+    <div class="tags-list" [@listAnim]>
         <app-tag-card *ngFor="let tag of tags;"
             color="{{tag.color}}"
             title="{{tag.title}}" tagId="{{tag.id}}"
-            (delete)="deleteTag(tag)"></app-tag-card>
+            (delete)="deleteTag(tag)" [@itemAnim]></app-tag-card>
     </div>
     
     <button class="button floating-add-button is-primary" (click)="Add()">
