@@ -15,7 +15,7 @@ export class NotesComponent implements OnInit{
 
   notes: Note[] = [];
   tags: Tag[] = [];
-  filteredNotes: Note[] = new Array<Note>();
+  filteredNotes: Note[] = [];
   isLoading: boolean = false;
 
   constructor(private notesService: NotesService,

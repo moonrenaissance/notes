@@ -6,12 +6,17 @@
             </h1>
             <div #bodyText class="reminder-card-body">
                 <p #noteP>
-                    {{body}}
-                    {{date | date: 'y.MM.dd &nbsp;[hh:mm]'}}
+                    {{body}}                    
                 </p>
 
                 <div #truncator class="fade-out-truncation"></div>
             </div>
+        </div>
+
+        <div class="reminder-card-datetime">
+                <p>
+                    {{date | date: 'y.MM.dd &nbsp;[hh:mm]'}}
+                </p>
         </div>
 
         <div class="reminder-card-tags">            
@@ -21,6 +26,7 @@
                 </p>
             </span>
         </div>
+
     </div>
 
     <div class="delete-button" (click)="deleteReminder(reminderId)"></div>

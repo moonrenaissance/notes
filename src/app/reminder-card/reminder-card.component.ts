@@ -1,4 +1,4 @@
-import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter, ElementRef, Renderer2, ViewChild  } from '@angular/core';
 import { Tag } from '../models/tag.model';
 import { NotesService } from '../services/notes.service';
 import { TagsService } from '../services/tags.service';
@@ -18,6 +18,18 @@ export class ReminderCardComponent implements OnInit{
   @Output('delete') deleteEvent: EventEmitter<void> = new EventEmitter<void>();
 
   selectedTags: Tag[] = [];
+
+  ngAfterViewInit() {
+
+    let style = window.getComputedStyle(this.bodyText.nativeElement);
+
+    if (this.noteP.nativeElement.scrollHeight > this.bodyText.nativeElement.clientHeight) {
+      this.renderer.setStyle(this.truncator.nativeElement, 'display', 'block');
+    }
+    else {
+      this.renderer.setStyle(this.truncator.nativeElement, 'display', 'none');
+    }
+  }
 
   constructor(private notesService: NotesService,
               private tagsService: TagsService){}
@@ -53,4 +65,8 @@ export class ReminderCardComponent implements OnInit{
       }
     })
   }
+
+
+
+
 }

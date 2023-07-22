@@ -19,6 +19,8 @@ export class NoteCardComponent implements OnInit{
   @ViewChild('truncator') truncator: ElementRef<HTMLElement>;
   @ViewChild('bodyText') bodyText: ElementRef<HTMLElement>;
   @ViewChild('noteP') noteP: ElementRef<HTMLElement>;
+  @ViewChild('tagsList') tagsList: ElementRef<HTMLElement>;
+  @ViewChild('tagsText') tagsText: ElementRef<HTMLElement>;
 
   selectedTags: Tag[] = [];
 
@@ -70,5 +72,9 @@ export class NoteCardComponent implements OnInit{
         this.deleteEvent.emit();
       }
     })
+  }
+
+  goTag(id: string){
+    this.router.navigateByUrl('notes/tags/id/' +id);
   }
 }
