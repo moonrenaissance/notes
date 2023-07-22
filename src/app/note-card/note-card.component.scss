@@ -27,6 +27,7 @@
             font-size: 22px;
             font-weight: bold;
             color: $purple;
+            word-break: break-all;
         }
 
         .note-card-body {
@@ -97,6 +98,7 @@
     max-height: auto;
 
     padding: 16px;
+    max-height: auto;
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 15px;
@@ -121,4 +123,6 @@
     0 0.8px 0.8px #000, 
     -0.8px 0 0.8px #000, 
     0 -0.8px 0.8px #000;
+
+    word-break: break-all;
 }

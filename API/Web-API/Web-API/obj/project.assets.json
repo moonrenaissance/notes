@@ -3871,23 +3871,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Zver\\.nuget\\packages\\": {},
-    "E:\\Microsoft Visual Studio\\NuGetPackages": {}
+    "C:\\Users\\777\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Projects\\Notes-App\\API\\Web-API\\Web-API\\Web-API.csproj",
+      "projectUniqueName": "C:\\Users\\777\\Desktop\\final\\notes\\API\\Web-API\\Web-API\\Web-API.csproj",
       "projectName": "Web-API",
-      "projectPath": "E:\\Projects\\Notes-App\\API\\Web-API\\Web-API\\Web-API.csproj",
-      "packagesPath": "C:\\Users\\Zver\\.nuget\\packages\\",
-      "outputPath": "E:\\Projects\\Notes-App\\API\\Web-API\\Web-API\\obj\\",
+      "projectPath": "C:\\Users\\777\\Desktop\\final\\notes\\API\\Web-API\\Web-API\\Web-API.csproj",
+      "packagesPath": "C:\\Users\\777\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\777\\Desktop\\final\\notes\\API\\Web-API\\Web-API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "E:\\Microsoft Visual Studio\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Zver\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\777\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -3956,7 +3956,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }
