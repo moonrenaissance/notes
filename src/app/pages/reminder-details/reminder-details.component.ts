@@ -65,9 +65,11 @@ export class ReminderDetailsComponent implements OnInit{
   }
 
   onSubmit() {
+    console.log(this.reminderDetails);
     this.reminderDetails.notesTags = [];
     var calendar = <HTMLInputElement> document.getElementById('calendar');
     this.reminderDetails.date = new Date(calendar.value);
+    console.log(this.reminderDetails);
     this.reminderDetails.title = this.reminderDetails.title.trim();
     this.tags.forEach(tag =>{
       var element = <HTMLInputElement> document.getElementById(tag.id);

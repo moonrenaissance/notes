@@ -17,6 +17,7 @@ export class NoteCardComponent implements OnInit{
 
   @Output('delete') deleteEvent: EventEmitter<void> = new EventEmitter<void>();
   @Output('findTag') findTagEvent: EventEmitter<string> = new EventEmitter<string>();
+  @Output('remindNote') remindNoteEvent: EventEmitter<string> = new EventEmitter<string>();
 
   @ViewChild('truncator') truncator: ElementRef<HTMLElement>;
   @ViewChild('bodyText') bodyText: ElementRef<HTMLElement>;
@@ -75,7 +76,11 @@ export class NoteCardComponent implements OnInit{
     })
   }
 
-  goTag(title: string){
+  findTag(title: string){
     this.findTagEvent.emit(title);
+  }
+
+  remindNote(id: string){
+    this.remindNoteEvent.emit(id);
   }
 }
