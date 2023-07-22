@@ -27,7 +27,8 @@ export class NoteCardComponent implements OnInit{
 
   constructor(private renderer: Renderer2,
               private notesService: NotesService,
-              private tagsServise: TagsService) {}
+              private tagsServise: TagsService,
+              private router: Router) {}
 
   ngAfterViewInit() {
 
