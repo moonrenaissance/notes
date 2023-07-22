@@ -18,7 +18,9 @@ export class NotesComponent implements OnInit{
   filteredNotes: Note[] = new Array<Note>();
   isLoading: boolean = false;
 
-  constructor(private notesService: NotesService, private tagsService: TagsService, private router: Router) {}
+  constructor(private notesService: NotesService,
+              private tagsService: TagsService,
+              private router: Router) {}
 
   ngOnInit() {
     this.isLoading = true;
@@ -27,7 +29,8 @@ export class NotesComponent implements OnInit{
     .subscribe({
       next: (notes) =>{
         console.log(notes);
-        this.notes = notes;
+        this.notes = notes.filter(
+          r=> r.date.toString() == '1899-12-30T19:57:27');;
         this.filteredNotes = notes;
         this.isLoading = false;
       },

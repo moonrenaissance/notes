@@ -1,30 +1,7 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
     "X:\\Dev\\consom_practise\\notes\\API\\Web-API\\Web-API\\Web-API.csproj": {}
-=======
-<<<<<<< HEAD
-    "E:\\Projects\\Notes-App\\API\\Web-API\\Web-API\\Web-API.csproj": {}
-  },
-  "projects": {
-    "E:\\Projects\\Notes-App\\API\\Web-API\\Web-API\\Web-API.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "E:\\Projects\\Notes-App\\API\\Web-API\\Web-API\\Web-API.csproj",
-        "projectName": "Web-API",
-        "projectPath": "E:\\Projects\\Notes-App\\API\\Web-API\\Web-API\\Web-API.csproj",
-        "packagesPath": "C:\\Users\\Zver\\.nuget\\packages\\",
-        "outputPath": "E:\\Projects\\Notes-App\\API\\Web-API\\Web-API\\obj\\",
-        "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "E:\\Microsoft Visual Studio\\NuGetPackages"
-        ],
-        "configFilePaths": [
-          "C:\\Users\\Zver\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-    "C:\\Users\\777\\Desktop\\final\\notes\\API\\Web-API\\Web-API\\Web-API.csproj": {}
->>>>>>> acb08c5eb135daf50b91aacc3b64b6f8eec210bc
   },
   "projects": {
     "X:\\Dev\\consom_practise\\notes\\API\\Web-API\\Web-API\\Web-API.csproj": {
@@ -37,13 +14,7 @@
         "outputPath": "X:\\Dev\\consom_practise\\notes\\API\\Web-API\\Web-API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-<<<<<<< HEAD
           "C:\\Users\\Егор\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-          "C:\\Users\\777\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> 69cfe65c18785733218eadf12ee1f2a2e493fc1e
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
->>>>>>> acb08c5eb135daf50b91aacc3b64b6f8eec210bc
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -112,15 +83,7 @@
               "privateAssets": "all"
             }
           },
-<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
-=======
-<<<<<<< HEAD
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
-=======
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
->>>>>>> 69cfe65c18785733218eadf12ee1f2a2e493fc1e
->>>>>>> acb08c5eb135daf50b91aacc3b64b6f8eec210bc
         }
       }
     }

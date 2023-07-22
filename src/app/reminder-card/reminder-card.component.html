@@ -1,23 +1,13 @@
 <div #container class="reminder-card-container">
-    <div class="clickable-area">
+    <div class="clickable-area" [routerLink]="['id', reminderId]">
         <div class="reminder-card-content">
             <h1 class="reminder-card-title">
-                Example
+                {{title}}
             </h1>
             <div #bodyText class="reminder-card-body">
                 <p #noteP>
-                    Choose life. Choose a job. Choose a career. 
-                    Choose a family. Choose a fucking big television.
-                    Choose washing machines, cars, compact disc players, and electrical tin openers. 
-                    Choose good health, low cholesterol and dental insurance. 
-                    Choose fixed- interest mortgage repayments. 
-                    Choose a starter home. Choose your friends. 
-                    Choose leisure wear and matching luggage. 
-                    Choose a three piece suite on hire purchase in a range of fucking fabrics. 
-                    Choose DIY and wondering who you are on a Sunday morning. 
-                    Choose sitting on that couch watching mind-numbing sprit-crushing game shows, stuffing fucking junk food into your mouth. 
-                    Choose rotting away at the end of it all, pishing you last in a miserable home, nothing more than an embarrassment to the selfish, fucked-up brats you have spawned to replace yourself. 
-                    Choose your future. Choose life... But why would I want to do a thing like that?
+                    {{body}}
+                    {{date | date: 'y.MM.dd &nbsp;[hh:mm]'}}
                 </p>
 
                 <div #truncator class="fade-out-truncation"></div>
@@ -25,13 +15,13 @@
         </div>
 
         <div class="reminder-card-tags">            
-            <span>
+            <span *ngFor = "let tag of selectedTags" [style.background-color]="tag.color">
                 <p>
-                    Example
+                    {{tag.title}}
                 </p>
             </span>
         </div>
     </div>
 
-    <div class="delete-button"></div>
+    <div class="delete-button" (click)="deleteReminder(reminderId)"></div>
 </div>

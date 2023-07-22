@@ -1,7 +1,6 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
 import { NotesService } from 'src/app/services/notes.service';
 import { TagsService } from 'src/app/services/tags.service';
-import { Router } from '@angular/router';
 import { Tag } from '../models/tag.model';
 
 @Component({
@@ -25,8 +24,8 @@ export class NoteCardComponent implements OnInit{
 
   constructor(private renderer: Renderer2,
               private notesService: NotesService,
-              private tagsServise: TagsService,
-              private router: Router) {}
+              private tagsService: TagsService) {}
+
 
   ngAfterViewInit() {
 
@@ -40,12 +39,13 @@ export class NoteCardComponent implements OnInit{
     }
   }
 
+
   ngOnInit() {
     this.notesService.getNote(this.noteId)
     .subscribe({
       next: (note) =>{
         note.notesTags.forEach(noteTag => {
-          this.tagsServise.getTag(noteTag.tagId)
+          this.tagsService.getTag(noteTag.tagId)
           .subscribe({
             next: (tag) =>{
               this.selectedTags.push(tag);
@@ -61,6 +61,7 @@ export class NoteCardComponent implements OnInit{
       }
     });
   }
+
 
   deleteNote(id: string){
     this.notesService.deleteNote(id)

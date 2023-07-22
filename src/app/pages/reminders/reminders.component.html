@@ -1,7 +1,14 @@
 <div class="main-container">
 
     <div class="reminders-list">
-        <app-reminder-card></app-reminder-card>
+        <app-reminder-card 
+            *ngFor="let reminder of reminders"
+            title = "{{reminder.title}}"
+            body = "{{reminder.description}}"
+            reminderId = "{{reminder.id}}"
+            date = "{{reminder.date}}"
+            (delete)="deleteReminder(reminder)"
+        ></app-reminder-card>
     </div>
     
     <button class="button floating-add-button is-primary" (click)="Add()">
