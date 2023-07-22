@@ -3871,30 +3871,17 @@
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
     "C:\\Users\\Zver\\.nuget\\packages\\": {},
     "E:\\Microsoft Visual Studio\\NuGetPackages": {}
-=======
-    "C:\\Users\\777\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
->>>>>>> 2f1118814968df942d3ac68c07ecb3299cf991a4
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
       "projectUniqueName": "E:\\Projects\\Notes-App\\API\\Web-API\\Web-API\\Web-API.csproj",
       "projectName": "Web-API",
       "projectPath": "E:\\Projects\\Notes-App\\API\\Web-API\\Web-API\\Web-API.csproj",
       "packagesPath": "C:\\Users\\Zver\\.nuget\\packages\\",
       "outputPath": "E:\\Projects\\Notes-App\\API\\Web-API\\Web-API\\obj\\",
-=======
-      "projectUniqueName": "C:\\Users\\777\\Desktop\\final\\notes\\API\\Web-API\\Web-API\\Web-API.csproj",
-      "projectName": "Web-API",
-      "projectPath": "C:\\Users\\777\\Desktop\\final\\notes\\API\\Web-API\\Web-API\\Web-API.csproj",
-      "packagesPath": "C:\\Users\\777\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\777\\Desktop\\final\\notes\\API\\Web-API\\Web-API\\obj\\",
->>>>>>> 2f1118814968df942d3ac68c07ecb3299cf991a4
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "E:\\Microsoft Visual Studio\\NuGetPackages"
@@ -3969,11 +3956,7 @@
             "privateAssets": "all"
           }
         },
-<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
-=======
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
->>>>>>> 2f1118814968df942d3ac68c07ecb3299cf991a4
       }
     }
   },
@@ -3982,11 +3965,7 @@
       "code": "Undefined",
       "level": "Warning",
       "warningLevel": 1,
-<<<<<<< HEAD
       "message": "Ошибка чтения файла кэша E:\\Projects\\Notes-App\\API\\Web-API\\Web-API\\obj\\project.nuget.cache: Invalid property identifier character: <. Path 'version', line 3, position 0."
-=======
-      "message": "Ошибка чтения файла кэша C:\\Users\\777\\Desktop\\final\\notes\\API\\Web-API\\Web-API\\obj\\project.nuget.cache: Invalid property identifier character: <. Path 'version', line 3, position 0."
->>>>>>> 2f1118814968df942d3ac68c07ecb3299cf991a4
     }
   ]
 }
