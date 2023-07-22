@@ -85,7 +85,6 @@ C:\Users\777\Desktop\angular\notes\API\Web-API\Web-API\obj\Debug\net6.0\refint\W
 C:\Users\777\Desktop\angular\notes\API\Web-API\Web-API\obj\Debug\net6.0\Web-API.pdb
 C:\Users\777\Desktop\angular\notes\API\Web-API\Web-API\obj\Debug\net6.0\Web-API.genruntimeconfig.cache
 C:\Users\777\Desktop\angular\notes\API\Web-API\Web-API\obj\Debug\net6.0\ref\Web-API.dll
-X:\Dev\consom_practise\notes\API\Web-API\Web-API\bin\Debug\net6.0\appsettings.Development.json
 X:\Dev\consom_practise\notes\API\Web-API\Web-API\bin\Debug\net6.0\appsettings.json
 X:\Dev\consom_practise\notes\API\Web-API\Web-API\bin\Debug\net6.0\Web-API.exe
 X:\Dev\consom_practise\notes\API\Web-API\Web-API\bin\Debug\net6.0\Web-API.deps.json
