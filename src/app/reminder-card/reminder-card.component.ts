@@ -19,6 +19,14 @@ export class ReminderCardComponent implements OnInit{
 
   selectedTags: Tag[] = [];
 
+  @ViewChild('truncator') truncator: ElementRef<HTMLElement>;
+  @ViewChild('bodyText') bodyText: ElementRef<HTMLElement>;
+  @ViewChild('noteP') noteP: ElementRef<HTMLElement>;
+
+  constructor(private notesService: NotesService,
+    private tagsService: TagsService,
+    private renderer: Renderer2){}
+
   ngAfterViewInit() {
 
     let style = window.getComputedStyle(this.bodyText.nativeElement);
@@ -31,8 +39,7 @@ export class ReminderCardComponent implements OnInit{
     }
   }
 
-  constructor(private notesService: NotesService,
-              private tagsService: TagsService){}
+
 
   ngOnInit(): void {
     this.notesService.getNote(this.reminderId)

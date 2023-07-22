@@ -4,6 +4,7 @@
 
     <div class="tags-list">
         <app-tag-card *ngFor="let tag of tags;"
+            color="{{tag.color}}"
             title="{{tag.title}}" tagId="{{tag.id}}"
             (delete)="deleteTag(tag)"></app-tag-card>
     </div>

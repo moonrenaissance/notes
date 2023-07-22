@@ -2,6 +2,7 @@ import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, 
 import { NotesService } from 'src/app/services/notes.service';
 import { TagsService } from 'src/app/services/tags.service';
 import { Tag } from '../models/tag.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-note-card',
@@ -26,7 +27,8 @@ export class NoteCardComponent implements OnInit{
 
   constructor(private renderer: Renderer2,
               private notesService: NotesService,
-              private tagsService: TagsService) {}
+              private tagsService: TagsService,
+              private router: Router) {}
 
 
   ngAfterViewInit() {
