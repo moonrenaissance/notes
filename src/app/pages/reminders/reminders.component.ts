@@ -76,6 +76,7 @@ import { trigger, transition, style, animate, query, stagger} from '@angular/ani
 export class RemindersComponent implements OnInit{
 
   reminders : Note[] = [];
+  isLoading: boolean = false;
 
   constructor(private router: Router,
               private noteService: NotesService) {}
@@ -85,11 +86,13 @@ export class RemindersComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.noteService.getAllNotes()
     .subscribe({
       next: (reminders) =>{
         this.reminders = reminders.
           filter(r=> r.date.toString() != '1899-12-30T19:57:27');
+          this.isLoading = false;
       },
       error: (response)=>{
         console.log(response);

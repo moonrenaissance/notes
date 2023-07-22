@@ -1,11 +1,11 @@
 <div class="form-container">
-    <form #noteForm="ngForm">
+    <form #noteForm="ngForm" (ngSubmit)="onSubmit()">
         <div class="field">
             <label class="label">
                 Title 
             </label>
             <div class="control">
-                <input type="text" name="title" required class="input">
+                <input type="text" name="title" pattern="^(?! +$)[а-яА-Яa-zA-Z0-9\s]+$" [(ngModel)]="reminderDetails.title" required class="input">
             </div>
         </div>
 
@@ -16,7 +16,7 @@
                 Description
             </label>
             <div class="control">
-                <textarea class="textarea" name="description"></textarea>
+                <textarea class="textarea" name="description" [(ngModel)]="reminderDetails.description"></textarea>
             </div>
         </div>
 
@@ -27,17 +27,17 @@
                 Tags
             </label>
             <div class="check-group">
-                <label class="checkbox" >
-                    <input class="checkbox__input" type="checkbox"> 
+                <label class="checkbox" *ngFor="let tag of tags" class="checkbox">
+                    <input id={{tag.id}} class="checkbox__input" type="checkbox"  *ngIf="isChecked(tag); else elseBlock" checked=""> 
                     <ng-template #elseBlock>
-                        <input class="checkbox__input" type="checkbox" > 
+                        <input id={{tag.id}} class="checkbox__input" type="checkbox" > 
                     </ng-template>
                     <svg class="checkbox__icon" viewBox="0 0 22 22">
                         <rect width="21" height="21" x=".5" y=".5" fill="#FFF" stroke="black" rx="3" />
                         <path class="tick" stroke="#37c7f2" fill="none" stroke-linecap="round" stroke-width="4" d="M4 10l5 5 9-9" />
                     </svg>
               
-                  <span class="checkbox__label"></span>
+                  <span class="checkbox__label" [style.background-color]="tag.color">{{tag.title}}</span>
                 </label>
             </div>
         </div>
@@ -45,10 +45,10 @@
         <br>
 
         <div class="datetime-selector">
-        <label class="label">
-                Date and Time
-        </label>
-        <input type="datetime-local">
+            <label class="label">
+                    Date and Time
+            </label>
+            <input id="calendar" type="datetime-local" value = {{reminderDetails.date}}>
         </div>
 
         <br>

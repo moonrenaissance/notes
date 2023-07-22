@@ -23,6 +23,8 @@
     .reminder-card-content {
         padding: 25px;
 
+        word-break: break-all;
+
         .reminder-card-title {
             font-size: 22px;
             font-weight: bold;
@@ -89,6 +91,8 @@
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 15px;
+
+    word-break: break-all;
 }
   
 .reminder-card-tags span {

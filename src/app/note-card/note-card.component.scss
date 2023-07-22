@@ -18,6 +18,13 @@
             transition-delay: 0.35s;
             transform: scale(1);
         }
+
+        .remind-button {
+            opacity: 1;
+
+            transition-delay: 0.35s;
+            transform: scale(1);
+        }
     }
 
     .note-card-content {
@@ -64,12 +71,17 @@
     }
 }
 
-.delete-button {
+.interactive-buttons{
+    display: flex;
+    flex-direction: row;
+    
     position: absolute;
     
     top: 12px;
     right: 12px;
-    
+}
+
+.delete-button {
     height: 34px;
     width: 34px;
 
@@ -90,6 +102,30 @@
 
     &:active {
         background-color: darken($color: $light-red, $amount: 4%);
+    }
+}
+
+.remind-button {
+    height: 34px;
+    width: 34px;
+
+    background-color: $yellow;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    border-radius: 4px;
+    margin-right: 4px;
+
+    transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+
+    opacity: 0;
+
+    &:hover {
+        background-color: darken($color: $yellow, $amount: 2%);
+    }
+
+    &:active {
+        background-color: darken($color: $yellow, $amount: 4%);
     }
 }
 

@@ -81,7 +81,11 @@ export class NotesComponent implements OnInit{
   notes: Note[] = [];
   tags: Tag[] = [];
   filteredNotes: Note[] = [];
+
+  remNote: Note;
+
   isLoading: boolean = false;
+  isRemind: boolean = false;
 
   constructor(private notesService: NotesService,
               private tagsService: TagsService,
@@ -95,8 +99,8 @@ export class NotesComponent implements OnInit{
       next: (notes) =>{
         console.log(notes);
         this.notes = notes.filter(
-          r=> r.date.toString() == '1899-12-30T19:57:27');;
-        this.filteredNotes = notes;
+          r=> r.date.toString() == '1899-12-30T19:57:27');
+        this.filteredNotes = this.notes;
         this.isLoading = false;
       },
       error: (response)=>{
@@ -192,5 +196,79 @@ export class NotesComponent implements OnInit{
     if(indexFilterNote != -1){
       this.filteredNotes.splice(indexFilterNote, 1);
     }
+  }
+
+  deleteNoteId(id: string){
+    let indexNote = this.notes.findIndex(item => item.id === id);;
+    if(indexNote != -1){
+      this.notes.splice(indexNote, 1);
+    }
+
+    let indexFilterNote = this.filteredNotes.findIndex(item => item.id === id);;
+    if(indexFilterNote != -1){
+      this.filteredNotes.splice(indexFilterNote, 1);
+    }
+  }
+  
+  findTag(title: string, input: HTMLInputElement){
+    if (input.value !== '') {
+      input.value += ' ';
+    }
+    input.value += title;
+    
+    this.filter(input.value);
+  }
+  
+  openRemindNote(id: string){
+    this.notesService.getNote(id)
+    .subscribe({
+      next: (note) =>{
+        this.isRemind = true;
+        const mainContainer = document.querySelector('.main-container') as HTMLDivElement;
+        if(mainContainer){
+          mainContainer.classList.toggle('blurred');
+          mainContainer.style.pointerEvents = 'none';
+          this.isRemind = true;
+        }
+        this.remNote = note;
+        
+        console.log(note);
+      },
+      error: (response)=>{
+        console.log(response);
+      }
+    });
+  }
+  
+  cancel(){
+    const mainContainer = document.querySelector('.main-container') as HTMLDivElement;
+    if(mainContainer){
+      mainContainer.classList.toggle('blurred');
+      mainContainer.style.pointerEvents = 'auto';
+      this.isRemind = false;
+    }
+  }
+  
+  save(){
+    var calendar = <HTMLInputElement> document.getElementById('calendar');
+    this.remNote.date = new Date(calendar.value);
+
+    this.saveRemindNote();
+  }
+
+  saveRemindNote(){
+    this.notesService.updateNote(this.remNote.id, this.remNote)
+    .subscribe({
+      next: (response) => {
+        const mainContainer = document.querySelector('.main-container') as HTMLDivElement;
+        if(mainContainer){
+          mainContainer.classList.toggle('blurred');
+          mainContainer.style.pointerEvents = 'auto';
+          this.isRemind = false;
+        }
+        
+        this.deleteNoteId(this.remNote.id);
+      }
+    })
   }
 }

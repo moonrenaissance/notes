@@ -37,8 +37,10 @@
             font-weight: bold;
             color: #555;
 
-            max-height: 80px;
+            height: auto;
             overflow: hidden;
+
+            word-break: break-all;
         }
     }
 }

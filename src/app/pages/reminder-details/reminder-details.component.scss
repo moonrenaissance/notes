@@ -62,6 +62,8 @@ input, textarea {
     0 0.8px 0.8px #000, 
     -0.8px 0 0.8px #000, 
     0 -0.8px 0.8px #000;
+    
+    word-break: break-all;
 }
   
 .checkbox__input:checked + .checkbox__icon .tick {
