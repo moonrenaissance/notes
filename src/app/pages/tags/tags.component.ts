@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TagsService } from 'src/app/services/tags.service';
 import { Tag } from 'src/app/models/tag.model';
 import { Router } from '@angular/router';

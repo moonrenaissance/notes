@@ -1,6 +1,22 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
+    "X:\\Dev\\consom_practise\\notes\\API\\Web-API\\Web-API\\Web-API.csproj": {}
+  },
+  "projects": {
+    "X:\\Dev\\consom_practise\\notes\\API\\Web-API\\Web-API\\Web-API.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "X:\\Dev\\consom_practise\\notes\\API\\Web-API\\Web-API\\Web-API.csproj",
+        "projectName": "Web-API",
+        "projectPath": "X:\\Dev\\consom_practise\\notes\\API\\Web-API\\Web-API\\Web-API.csproj",
+        "packagesPath": "C:\\Users\\Егор\\.nuget\\packages\\",
+        "outputPath": "X:\\Dev\\consom_practise\\notes\\API\\Web-API\\Web-API\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Егор\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
     "C:\\Users\\777\\Desktop\\final\\notes\\API\\Web-API\\Web-API\\Web-API.csproj": {}
   },
   "projects": {
@@ -19,6 +35,7 @@
         "configFilePaths": [
           "C:\\Users\\777\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+>>>>>>> 00664aec2e0cad2fce342d38d7facf2dd6bbbbf5
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,6 +43,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -86,7 +104,11 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+=======
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+>>>>>>> 00664aec2e0cad2fce342d38d7facf2dd6bbbbf5
         }
       }
     }
