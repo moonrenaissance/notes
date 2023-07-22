@@ -49,6 +49,7 @@ export class TagDetailsComponent implements OnInit{
   onSubmit() {
     var color = <HTMLInputElement> document.getElementById('colorField');
     this.tagDetails.color = color.value;
+    this.tagDetails.title = this.tagDetails.title.trim();
     if(this.typePage)
       this.updateTag();
     else

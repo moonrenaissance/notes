@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { TagsService } from 'src/app/services/tags.service';
 import { Tag } from 'src/app/models/tag.model';
 import { Router } from '@angular/router';
@@ -15,20 +15,30 @@ export class TagsComponent implements OnInit{
               private router: Router) {}
 
   tags: Tag[]
+  isLoading: boolean = false;
 
   ngOnInit() {
+    this.isLoading = true;
     this.tagsSeervice.getAllTags()
     .subscribe({
       next: (tags) =>{
         this.tags = tags;
+        this.isLoading = false;
       },
       error: (response)=>{
         console.log(response);
       }
     });
   }
-  
+
   Add() {
     this.router.navigateByUrl('notes/tags/new');
+  }
+
+  deleteTag(tag: Tag){
+    let indexTag = this.tags.indexOf(tag);
+    if(indexTag != -1){
+      this.tags.splice(indexTag, 1);
+    }
   }
 }

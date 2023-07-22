@@ -1,9 +1,11 @@
 <div class="main-container">
 
-    <div class="tags-list">
-        <app-tag-card *ngFor="let tag of tags" title="{{tag.title}}" tagId="{{tag.id}}">
+    <span class="loader" *ngIf="isLoading"></span>
 
-        </app-tag-card>
+    <div class="tags-list">
+        <app-tag-card *ngFor="let tag of tags;"
+            title="{{tag.title}}" tagId="{{tag.id}}"
+            (delete)="deleteTag(tag)"></app-tag-card>
     </div>
     
     <button class="button floating-add-button is-primary" (click)="Add()">

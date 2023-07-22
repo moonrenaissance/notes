@@ -70,6 +70,7 @@ export class NoteDetailsComponent implements OnInit{
 
   onSubmit() {
     this.noteDetails.notesTags = [];
+    this.noteDetails.title = this.noteDetails.title.trim();
     this.tags.forEach(tag =>{
       var element = <HTMLInputElement> document.getElementById(tag.id);
       if(element.checked)
