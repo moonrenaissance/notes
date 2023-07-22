@@ -20,13 +20,14 @@ export class NoteCardComponent implements OnInit{
   @ViewChild('truncator') truncator: ElementRef<HTMLElement>;
   @ViewChild('bodyText') bodyText: ElementRef<HTMLElement>;
   @ViewChild('noteP') noteP: ElementRef<HTMLElement>;
+  @ViewChild('tagsList') tagsList: ElementRef<HTMLElement>;
+  @ViewChild('tagsText') tagsText: ElementRef<HTMLElement>;
 
   selectedTags: Tag[] = [];
 
   constructor(private renderer: Renderer2,
               private notesService: NotesService,
-              private tagsServise: TagsService,
-              private router: Router) {}
+              private tagsServise: TagsService) {}
 
   ngAfterViewInit() {
 

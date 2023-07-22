@@ -13,8 +13,8 @@
             </div>
         </div>
 
-        <div class="note-card-tags">            
-            <span *ngFor = "let tag of selectedTags" [style.background-color]="tag.color">
+        <div #tagsList class="note-card-tags">            
+            <span #tagsText *ngFor = "let tag of selectedTags" [style.background-color]="tag.color">
                 {{tag.title}}
             </span>
         </div>
