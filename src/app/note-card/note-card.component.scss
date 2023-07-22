@@ -35,7 +35,7 @@
             color: #555;
 
             max-height: 80px;
-            overflow: hidden;
+            overflow-x: auto;
 
             .fade-out-truncation {
                 position: absolute;
@@ -47,6 +47,11 @@
                 width: 100%;
                 background: linear-gradient(to bottom, rgba(white, 0) 0%, rgba(white, 0.8) 50%, white 100%);
             }
+        }
+
+        .note-card-body::-webkit-scrollbar{
+            width: 0px;
+            height: 0px;
         }
     }
 }
@@ -87,14 +92,6 @@
     max-height: 90px;
     display: flex;
     flex-wrap: wrap;
-    margin-top: 10px;
-
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    
-    opacity: 85%;
 }
   
 .note-card-tags span {
