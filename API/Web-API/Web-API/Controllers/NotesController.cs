@@ -20,7 +20,18 @@ namespace Web_API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllNotes()
         {
-            var notes = await _fullStackDbContext.Notes.Include(
+            var date = new DateTime(1899, 12, 30, 19, 57, 27);
+            var notes = await _fullStackDbContext.Notes.Where(a => a.Date == date).Include(
+                n => n.NotesTags).OrderBy(n => n.DateOfCreation).ToListAsync();
+
+            return Ok(notes);
+        }
+
+        [HttpGet("Reminders/")]
+        public async Task<IActionResult> GetAllReminders()
+        {
+            var date = new DateTime(1899, 12, 30, 19, 57, 27);
+            var notes = await _fullStackDbContext.Notes.Where(a => a.Date != date).Include(
                 n => n.NotesTags).OrderBy(n => n.DateOfCreation).ToListAsync();
 
             return Ok(notes);

@@ -109,7 +109,8 @@
     height: 34px;
     width: 34px;
 
-    background-color: $yellow;
+    background-color: $light;
+    background-image: url('../../assets/reminder_icon.svg');
     background-repeat: no-repeat;
     background-position: center;
 
@@ -121,11 +122,11 @@
     opacity: 0;
 
     &:hover {
-        background-color: darken($color: $yellow, $amount: 2%);
+        background-color: darken($color: $light, $amount: 2%);
     }
 
     &:active {
-        background-color: darken($color: $yellow, $amount: 4%);
+        background-color: darken($color: $light, $amount: 4%);
     }
 }
 

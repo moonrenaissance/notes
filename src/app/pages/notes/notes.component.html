@@ -43,18 +43,19 @@
 
         <span class="loader" *ngIf="isLoading"></span>
 
-        <div class="notes-list">
+        <div class="notes-list" [@listAnim]>
                 <app-note-card *ngFor = "let note of filteredNotes;" 
                     title="{{note.title}}" body="{{note.description}}" noteId="{{note.id}}"
                     (delete)="deleteNote(note)"
                     (findTag)="findTag($event, input)"
-                    (remindNote)="openRemindNote($event)"></app-note-card>
+                    (remindNote)="openRemindNote($event)" [@itemAnim]></app-note-card>
         </div>
         
         <button class="button floating-add-button is-primary" (click)="Add()">
             + Add New Note
         </button>
 </div>
+
 <div class="remind-block" *ngIf="isRemind">
     <div class="remind-items">
         <h1 class="note-card-title" id="remindTitle">

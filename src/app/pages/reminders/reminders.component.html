@@ -44,7 +44,7 @@
 
     <span class="loader" *ngIf="isLoading"></span>
 
-    <div class="reminders-list">
+    <div class="reminders-list" [@listAnim]>
         <app-reminder-card 
             *ngFor="let reminder of reminders"
             title = "{{reminder.title}}"
@@ -52,6 +52,7 @@
             reminderId = "{{reminder.id}}"
             date = "{{reminder.date}}"
             (delete)="deleteReminder(reminder)"
+            [@itemAnim]
         ></app-reminder-card>
     </div>
     
