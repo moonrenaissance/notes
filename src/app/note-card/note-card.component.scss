@@ -27,6 +27,7 @@
             font-size: 22px;
             font-weight: bold;
             color: $purple;
+            word-break: break-all;
         }
 
         .note-card-body {
@@ -121,4 +122,6 @@
     0 0.8px 0.8px #000, 
     -0.8px 0 0.8px #000, 
     0 -0.8px 0.8px #000;
+
+    word-break: break-all;
 }
