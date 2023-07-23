@@ -3871,24 +3871,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Zver\\.nuget\\packages\\": {},
-    "E:\\Microsoft Visual Studio\\NuGetPackages": {}
+    "C:\\Users\\Егор\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Projects\\Notes-App\\API\\Web-API\\Web-API\\Web-API.csproj",
+      "projectUniqueName": "X:\\Dev\\consom_practise\\notes\\API\\Web-API\\Web-API\\Web-API.csproj",
       "projectName": "Web-API",
-      "projectPath": "E:\\Projects\\Notes-App\\API\\Web-API\\Web-API\\Web-API.csproj",
-      "packagesPath": "C:\\Users\\Zver\\.nuget\\packages\\",
-      "outputPath": "E:\\Projects\\Notes-App\\API\\Web-API\\Web-API\\obj\\",
+      "projectPath": "X:\\Dev\\consom_practise\\notes\\API\\Web-API\\Web-API\\Web-API.csproj",
+      "packagesPath": "C:\\Users\\Егор\\.nuget\\packages\\",
+      "outputPath": "X:\\Dev\\consom_practise\\notes\\API\\Web-API\\Web-API\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "E:\\Microsoft Visual Studio\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Zver\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Егор\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3896,6 +3891,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -3956,20 +3952,16 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
       }
     }
-<<<<<<< HEAD
-  }
-=======
   },
   "logs": [
     {
       "code": "Undefined",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Ошибка чтения файла кэша E:\\Projects\\Notes-App\\API\\Web-API\\Web-API\\obj\\project.nuget.cache: Invalid property identifier character: <. Path 'version', line 3, position 0."
+      "message": "Ошибка чтения файла кэша X:\\Dev\\consom_practise\\notes\\API\\Web-API\\Web-API\\obj\\project.nuget.cache: Invalid property identifier character: <. Path 'expectedPackageFiles', line 86, position 0."
     }
   ]
->>>>>>> 6e5afc993e76ccb7f2a1213ed9e950f126945f5e
 }

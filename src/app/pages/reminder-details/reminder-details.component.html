@@ -35,8 +35,7 @@
                     <svg class="checkbox__icon" viewBox="0 0 22 22">
                         <rect width="21" height="21" x=".5" y=".5" fill="#FFF" stroke="black" rx="3" />
                         <path class="tick" stroke="#37c7f2" fill="none" stroke-linecap="round" stroke-width="4" d="M4 10l5 5 9-9" />
-                    </svg>
-              
+                    </svg>              
                   <span class="checkbox__label" [style.background-color]="tag.color">{{tag.title}}</span>
                 </label>
             </div>
@@ -48,19 +47,23 @@
             <label class="label">
                     Date and Time
             </label>
-            <input id="calendar" type="datetime-local" value = {{reminderDetails.date}}>
+            
+            <input id="calendar" 
+                   type="datetime-local" 
+                   value = {{reminderDetails.date}}
+                   (change)="dateCheck()">
         </div>
 
         <br>
 
         <div class="field is-grouped is-pulled-right">
             <div class="control">
-                <button class="button is-text" type="button">
+                <button class="button is-text" type="button" (click)="Cancel()">
                     Cancel
                 </button>
             </div>
             <div class="control">
-                <button class="button is-success"  [disabled]="!noteForm.valid" type="submit">
+                <button class="button is-success"  [disabled]="!noteForm.valid || !isDate" type="submit">
                     Save
                 </button>
             </div>

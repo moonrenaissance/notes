@@ -86,6 +86,7 @@ export class NotesComponent implements OnInit{
 
   isLoading: boolean = false;
   isRemind: boolean = false;
+  isDate : boolean = false;
 
   constructor(private notesService: NotesService,
               private tagsService: TagsService,
@@ -269,5 +270,11 @@ export class NotesComponent implements OnInit{
         this.deleteNoteId(this.remNote.id);
       }
     })
+  }
+
+  dateCheck()
+  {
+    var calendar = <HTMLInputElement> document.getElementById('calendar');
+    this.isDate =  calendar.value != '';
   }
 }

@@ -10,6 +10,8 @@ namespace Web_API.Controllers
     [Route("api/[controller]")]
     public class NotesController : Controller
     {
+        DateTime NOTE_DATE = new DateTime(1899, 12, 30, 19, 57, 27);
+
         private readonly FullStackDbContext _fullStackDbContext;
 
         public NotesController(FullStackDbContext fullStackDbContext)
@@ -20,8 +22,7 @@ namespace Web_API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllNotes()
         {
-            var date = new DateTime(1899, 12, 30, 19, 57, 27);
-            var notes = await _fullStackDbContext.Notes.Where(a => a.Date == date).Include(
+            var notes = await _fullStackDbContext.Notes.Where(a => a.Date == NOTE_DATE).Include(
                 n => n.NotesTags).OrderBy(n => n.DateOfCreation).ToListAsync();
 
             return Ok(notes);
@@ -30,8 +31,7 @@ namespace Web_API.Controllers
         [HttpGet("Reminders/")]
         public async Task<IActionResult> GetAllReminders()
         {
-            var date = new DateTime(1899, 12, 30, 19, 57, 27);
-            var notes = await _fullStackDbContext.Notes.Where(a => a.Date != date).Include(
+            var notes = await _fullStackDbContext.Notes.Where(a => a.Date != NOTE_DATE).Include(
                 n => n.NotesTags).OrderBy(n => n.DateOfCreation).ToListAsync();
 
             return Ok(notes);
