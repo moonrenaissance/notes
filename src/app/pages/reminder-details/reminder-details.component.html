@@ -48,7 +48,7 @@
             <label class="label">
                     Date and Time
             </label>
-            <input id="calendar" type="datetime-local" value = {{reminderDetails.date}}>
+            <input id="calendar" type="datetime-local" value = "{{reminderDetails.date | date:'short'}}">
         </div>
 
         <br>

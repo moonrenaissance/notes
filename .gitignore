@@ -44,6 +44,5 @@ Thumbs.db
 
 
 .vs
-API/Web-API/Web-API/bin/
-API/Web-API/Web-API/obj/
-API/Web-API/Web-API/appsettings.json
+bin/
+obj/
