@@ -14,8 +14,8 @@ export class ReminderCardComponent implements OnInit{
   @Input('reminderId') reminderId: string;
   @Input('date') date: string;
 
-
-  @Output('delete') deleteEvent: EventEmitter<void> = new EventEmitter<void>();
+  @Output('delete') deleteEvent: EventEmitter<string> = new EventEmitter<string>();
+  @Output('findTag') findTagEvent: EventEmitter<string> = new EventEmitter<string>();
 
   selectedTags: Tag[] = [];
 
@@ -68,12 +68,13 @@ export class ReminderCardComponent implements OnInit{
     this.notesService.deleteNote(id)
     .subscribe({
       next: (response) =>{
-        this.deleteEvent.emit();
+        this.deleteEvent.emit(id);
       }
     })
   }
 
-
-
+  findTag(title: string){
+    this.findTagEvent.emit(title);
+  }
 
 }

@@ -51,7 +51,8 @@
             body = "{{reminder.description}}"
             reminderId = "{{reminder.id}}"
             date = "{{reminder.date}}"
-            (delete)="deleteReminder(reminder)"
+            (delete)="deleteReminder($event)"
+            (findTag)="findTag($event, input)"
             [@itemAnim]
         ></app-reminder-card>
     </div>
