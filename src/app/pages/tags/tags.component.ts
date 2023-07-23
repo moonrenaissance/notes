@@ -116,7 +116,7 @@ export class TagsComponent implements OnInit{
     let terms: string[] = query.split(' ');
     terms = this.removeDuplications(terms);
     terms.forEach(term => {
-      let results: Tag[] = this.relevantNotes(term);
+      let results: Tag[] = this.relevantTags(term);
       allResults = [...allResults, ...results]
     });
 
@@ -131,10 +131,10 @@ export class TagsComponent implements OnInit{
     return Array.from(uniqueResults);
   }
 
-  relevantNotes(query: string): Array<Tag>{
+  relevantTags(query: string): Array<Tag>{
     query = query.toLowerCase().trim();
 
-    let relevantNotes = this.tags.filter(tag =>{
+    let relevantTags = this.tags.filter(tag =>{
       if(tag.title.toLowerCase().includes(query)){
         return true;
       }
@@ -142,7 +142,7 @@ export class TagsComponent implements OnInit{
       return false;
     });
 
-    return relevantNotes;
+    return relevantTags;
   }
 
   deleteTag(tag: Tag){

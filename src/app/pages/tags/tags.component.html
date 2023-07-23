@@ -14,7 +14,7 @@
     <span class="loader" *ngIf="isLoading"></span>
 
     <div class="tags-list" [@listAnim]>
-        <app-tag-card *ngFor="let tag of tags;"
+        <app-tag-card *ngFor="let tag of filteredTags;"
             color="{{tag.color}}"
             title="{{tag.title}}" tagId="{{tag.id}}"
             (delete)="deleteTag(tag)" [@itemAnim]></app-tag-card>
