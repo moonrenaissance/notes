@@ -23,7 +23,7 @@ namespace Web_API.Controllers
         public async Task<IActionResult> GetAllNotes()
         {
             var notes = await _fullStackDbContext.Notes.Where(a => a.Date == NOTE_DATE).Include(
-                n => n.NotesTags).OrderBy(n => n.DateOfCreation).ToListAsync();
+                n => n.NotesTags).OrderByDescending(n => n.DateOfCreation).ToListAsync();
 
             return Ok(notes);
         }
@@ -32,7 +32,7 @@ namespace Web_API.Controllers
         public async Task<IActionResult> GetAllReminders()
         {
             var notes = await _fullStackDbContext.Notes.Where(a => a.Date != NOTE_DATE).Include(
-                n => n.NotesTags).OrderBy(n => n.DateOfCreation).ToListAsync();
+                n => n.NotesTags).OrderByDescending(n => n.Date).ToListAsync();
 
             return Ok(notes);
         }
