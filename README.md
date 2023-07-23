@@ -1,4 +1,4 @@
-# Hell's Hot Notes
+# ![icons8-note-32](https://github.com/moonrenaissance/notes/assets/122813184/97d7843a-4164-40c9-b8d8-f9a07789aa5c) Hell's Hot Notes
 
 #### This project is a note-taking application. It allows you to create, delete and edit notes, add tags to notes and attach a date to notes.
 
