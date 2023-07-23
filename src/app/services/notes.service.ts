@@ -18,6 +18,10 @@ export class NotesService {
     return this.http.get<Note[]>(this.ApiUrl + '/api/Notes');
   }
 
+  getAllReminders(): Observable<Note[]>{
+    return this.http.get<Note[]>(this.ApiUrl + '/api/Notes/Reminders');
+  }
+
   getNoteOnText(Text: string): Observable<Note[]>{
     return this.http.get<Note[]>(this.ApiUrl + '/api/Notes/' + Text);
   }

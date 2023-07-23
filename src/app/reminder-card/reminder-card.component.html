@@ -18,15 +18,14 @@
                     {{date | date: 'y.MM.dd &nbsp;[hh:mm]'}}
                 </p>
         </div>
-
-        <div class="reminder-card-tags">            
-            <span *ngFor = "let tag of selectedTags" [style.background-color]="tag.color">
-                <p>
-                    {{tag.title}}
-                </p>
-            </span>
-        </div>
-
+    </div>
+    
+    <div class="reminder-card-tags">            
+        <span *ngFor = "let tag of selectedTags" [style.background-color]="tag.color" (click)="findTag(tag.title)">
+            <p>
+                {{tag.title}}
+            </p>
+        </span>
     </div>
 
     <div class="delete-button" (click)="deleteReminder(reminderId)"></div>

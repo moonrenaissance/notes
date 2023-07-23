@@ -45,8 +45,10 @@
 
         <div class="notes-list" [@listAnim]>
                 <app-note-card *ngFor = "let note of filteredNotes;" 
-                    title="{{note.title}}" body="{{note.description}}" noteId="{{note.id}}"
-                    (delete)="deleteNote(note)"
+                    title="{{note.title}}"
+                    body="{{note.description}}"
+                    noteId="{{note.id}}"
+                    (deleteNoteId)="deleteNote($event)"
                     (findTag)="findTag($event, input)"
                     (remindNote)="openRemindNote($event)" [@itemAnim]></app-note-card>
         </div>
@@ -64,7 +66,7 @@
         <label class="label-date">
                 Date and Time
         </label>
-        <input id="calendar" type="datetime-local">
+        <input id="calendar" (change)="dateCheck()" type="datetime-local">
 
         <div class="remButtons is-grouped is-pulled-right">
             <div class="control">
@@ -73,7 +75,7 @@
                 </button>
             </div>
             <div class="control">
-                <button class="button is-success" type="submit" (click)="save()">
+                <button class="button is-success" [disabled]="!isDate" type="submit" (click)="save()">
                     Save
                 </button>
             </div>

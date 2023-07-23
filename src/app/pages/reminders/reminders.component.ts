@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { NotesService } from 'src/app/services/notes.service';
 import { Note } from 'src/app/models/note.model';
 import { trigger, transition, style, animate, query, stagger} from '@angular/animations';
+import { Tag } from 'src/app/models/tag.model';
+import { TagsService } from 'src/app/services/tags.service';
 
 @Component({
   selector: 'app-reminders',
@@ -76,10 +78,14 @@ import { trigger, transition, style, animate, query, stagger} from '@angular/ani
 export class RemindersComponent implements OnInit{
 
   reminders : Note[] = [];
+  tags: Tag[] = [];
+  filteredReminders: Note[] = [];
+
   isLoading: boolean = false;
 
   constructor(private router: Router,
-              private noteService: NotesService) {}
+              private noteService: NotesService,
+              private tagsService: TagsService) {}
 
   Add() {
     this.router.navigateByUrl('notes/reminders/new');
@@ -87,12 +93,23 @@ export class RemindersComponent implements OnInit{
 
   ngOnInit(): void {
     this.isLoading = true;
-    this.noteService.getAllNotes()
+    this.noteService.getAllReminders()
     .subscribe({
       next: (reminders) =>{
-        this.reminders = reminders.
-          filter(r=> r.date.toString() != '1899-12-30T19:57:27');
-          this.isLoading = false;
+        this.reminders = reminders;
+        this.filteredReminders = reminders;
+        this.isLoading = false;
+      },
+      error: (response)=>{
+        console.log(response);
+      }
+    });
+
+    this.tagsService.getAllTags()
+    .subscribe({
+      next: (tag) =>{
+        console.log(tag);
+        this.tags = tag;
       },
       error: (response)=>{
         console.log(response);
@@ -100,10 +117,86 @@ export class RemindersComponent implements OnInit{
     });
   }
 
-  deleteReminder(reminder: Note){
-    let indexReminder = this.reminders.indexOf(reminder);
-    if(indexReminder != -1){
-      this.reminders.splice(indexReminder, 1);
+  deleteReminder(id: string){
+    let indexNote = this.reminders.findIndex(item => item.id === id);;
+    if(indexNote != -1){
+      this.reminders.splice(indexNote, 1);
     }
+
+    let indexFilterNote = this.filteredReminders.findIndex(item => item.id === id);;
+    if(indexFilterNote != -1){
+      this.filteredReminders.splice(indexFilterNote, 1);
+    }
+  }
+
+  filter(query: string){
+    if(query == "" || this.reminders == null){
+      this.filteredReminders = this.reminders;
+      return;
+    }
+
+    this.isLoading = true;
+    const chbxTitle = document.getElementById("findTitle") as HTMLInputElement;
+    const chbxDesc = document.getElementById("findDesc") as HTMLInputElement;
+    const chbxTags = document.getElementById("findTags") as HTMLInputElement;
+
+
+    let allResults: Note[] = new Array<Note>();
+    query = query.toLowerCase().trim();
+
+    let terms: string[] = query.split(' ');
+    terms = this.removeDuplications(terms);
+    terms.forEach(term => {
+      let results: Note[] = this.relevantReminders(term, chbxTitle.checked, chbxDesc.checked, chbxTags.checked);
+      allResults = [...allResults, ...results]
+    });
+
+    this.isLoading = false;
+    this.filteredReminders = this.removeDuplications(allResults);
+  }
+
+  removeDuplications(arr: Array<any>): Array<any>{
+    let uniqueResults: Set<any> = new Set<any>();
+    arr.forEach(e => uniqueResults.add(e));
+
+    return Array.from(uniqueResults);
+  }
+
+  relevantReminders(query: string, findTitle: boolean, findDesc:boolean, findTags: boolean): Array<Note>{
+    if(!findTitle && !findDesc && !findTags){
+      findTitle = true;
+      findDesc = true;
+      findTags = true;
+    }
+    query = query.toLowerCase().trim();
+
+    let relevantReminders = this.reminders.filter(remind =>{
+      if((findDesc && remind.description && remind.description.toLowerCase().includes(query)) || (findTitle && remind.title.toLowerCase().includes(query))){
+        return true;
+      }
+
+      let isTagFind: boolean = false;
+      if(findTags){
+        remind.notesTags.forEach(noteTag => {
+          if(this.tags.find(tag => tag.id === noteTag.tagId)?.title.toLowerCase().includes(query)){
+            isTagFind = true;
+            return;
+          }
+        });
+      }
+
+      return isTagFind;
+    });
+
+    return relevantReminders;
+  }
+
+  findTag(title: string, input: HTMLInputElement){
+    if (input.value !== '') {
+      input.value += ' ';
+    }
+    input.value += title;
+    
+    this.filter(input.value);
   }
 }

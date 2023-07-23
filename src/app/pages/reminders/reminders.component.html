@@ -3,7 +3,7 @@
     <div class="search-bar-container">
         <div class="field">
             <p class="control has-icons-left">
-                <input class="input is-rounded" type="text" #input placeholder="Search For (not work)">
+                <input class="input is-rounded" type="text" #input (keyup)=filter(input.value) placeholder="Search For">
                 <span class="icon is-small is-left">
                     <i class="fas fa-search"></i>
                 </span>
@@ -46,12 +46,13 @@
 
     <div class="reminders-list" [@listAnim]>
         <app-reminder-card 
-            *ngFor="let reminder of reminders"
+            *ngFor="let reminder of filteredReminders"
             title = "{{reminder.title}}"
             body = "{{reminder.description}}"
             reminderId = "{{reminder.id}}"
             date = "{{reminder.date}}"
-            (delete)="deleteReminder(reminder)"
+            (delete)="deleteReminder($event)"
+            (findTag)="findTag($event, input)"
             [@itemAnim]
         ></app-reminder-card>
     </div>

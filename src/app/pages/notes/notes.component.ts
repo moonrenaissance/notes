@@ -86,6 +86,7 @@ export class NotesComponent implements OnInit{
 
   isLoading: boolean = false;
   isRemind: boolean = false;
+  isDate : boolean = false;
 
   constructor(private notesService: NotesService,
               private tagsService: TagsService,
@@ -98,8 +99,7 @@ export class NotesComponent implements OnInit{
     .subscribe({
       next: (notes) =>{
         console.log(notes);
-        this.notes = notes.filter(
-          r=> r.date.toString() == '1899-12-30T19:57:27');
+        this.notes = notes;
         this.filteredNotes = this.notes;
         this.isLoading = false;
       },
@@ -186,19 +186,7 @@ export class NotesComponent implements OnInit{
     return relevantNotes;
   }
 
-  deleteNote(note: Note){
-    let indexNote = this.notes.indexOf(note);
-    if(indexNote != -1){
-      this.notes.splice(indexNote, 1);
-    }
-
-    let indexFilterNote = this.filteredNotes.indexOf(note);
-    if(indexFilterNote != -1){
-      this.filteredNotes.splice(indexFilterNote, 1);
-    }
-  }
-
-  deleteNoteId(id: string){
+  deleteNote(id: string){
     let indexNote = this.notes.findIndex(item => item.id === id);;
     if(indexNote != -1){
       this.notes.splice(indexNote, 1);
@@ -253,10 +241,6 @@ export class NotesComponent implements OnInit{
     var calendar = <HTMLInputElement> document.getElementById('calendar');
     this.remNote.date = new Date(calendar.value);
 
-    this.saveRemindNote();
-  }
-
-  saveRemindNote(){
     this.notesService.updateNote(this.remNote.id, this.remNote)
     .subscribe({
       next: (response) => {
@@ -267,8 +251,14 @@ export class NotesComponent implements OnInit{
           this.isRemind = false;
         }
         
-        this.deleteNoteId(this.remNote.id);
+        this.deleteNote(this.remNote.id);
       }
     })
+  }
+
+  dateCheck()
+  {
+    var calendar = <HTMLInputElement> document.getElementById('calendar');
+    this.isDate =  calendar.value != '';
   }
 }

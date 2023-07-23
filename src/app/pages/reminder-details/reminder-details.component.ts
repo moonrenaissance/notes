@@ -21,6 +21,8 @@ export class ReminderDetailsComponent implements OnInit{
     notesTags: []
   }
 
+  isDate : boolean = false;
+
   constructor(private notesService: NotesService,
               private tagsService: TagsService,
               private route: ActivatedRoute,
@@ -39,6 +41,7 @@ export class ReminderDetailsComponent implements OnInit{
           .subscribe({
             next:(response) =>{
               this.reminderDetails = response;
+              this.isDate = true;
 
             }
           });
@@ -46,10 +49,9 @@ export class ReminderDetailsComponent implements OnInit{
         }
       }
     })
-
-
     this.getAllTags();
   }
+
 
   getAllTags(): void
   {
@@ -64,13 +66,13 @@ export class ReminderDetailsComponent implements OnInit{
     });
   }
 
+
   onSubmit() {
-    console.log(this.reminderDetails);
     this.reminderDetails.notesTags = [];
     var calendar = <HTMLInputElement> document.getElementById('calendar');
     this.reminderDetails.date = new Date(calendar.value);
-    console.log(this.reminderDetails);
     this.reminderDetails.title = this.reminderDetails.title.trim();
+
     this.tags.forEach(tag =>{
       var element = <HTMLInputElement> document.getElementById(tag.id);
       if(element.checked)
@@ -98,12 +100,19 @@ export class ReminderDetailsComponent implements OnInit{
       if(noteTag.tagId == tag.id)
       {
         isChecked = true;
-      }
-      
+      }      
     }); 
 
     return isChecked;
   }
+  
+
+  dateCheck()
+  {
+    var calendar = <HTMLInputElement> document.getElementById('calendar');
+    this.isDate =  calendar.value != '';
+  }
+
 
   Cancel() {
     this.router.navigateByUrl('notes/reminders');
