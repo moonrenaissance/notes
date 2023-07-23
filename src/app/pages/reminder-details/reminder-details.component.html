@@ -47,11 +47,15 @@
             <label class="label">
                     Date and Time
             </label>
+<<<<<<< HEAD
             
             <input id="calendar" 
                    type="datetime-local" 
                    value = {{reminderDetails.date}}
                    (change)="dateCheck()">
+=======
+            <input id="calendar" type="datetime-local" value = "{{reminderDetails.date | date:'short'}}">
+>>>>>>> fe99c5a70d3aec1e8464b5ffa05b3304f07a481c
         </div>
 
         <br>

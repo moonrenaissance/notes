@@ -45,10 +45,15 @@
 
         <div class="notes-list" [@listAnim]>
                 <app-note-card *ngFor = "let note of filteredNotes;" 
+<<<<<<< HEAD
                     title="{{note.title}}"
                     body="{{note.description}}"
                     noteId="{{note.id}}"
                     (delete)="deleteNote(note)"
+=======
+                    title="{{note.title}}" body="{{note.description}}" noteId="{{note.id}}"
+                    (deleteNoteId)="deleteNote($event)"
+>>>>>>> fe99c5a70d3aec1e8464b5ffa05b3304f07a481c
                     (findTag)="findTag($event, input)"
                     (remindNote)="openRemindNote($event)" [@itemAnim]></app-note-card>
         </div>

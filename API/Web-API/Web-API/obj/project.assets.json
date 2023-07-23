@@ -3871,11 +3871,17 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\Егор\\.nuget\\packages\\": {}
+=======
+    "C:\\Users\\777\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+>>>>>>> fe99c5a70d3aec1e8464b5ffa05b3304f07a481c
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "X:\\Dev\\consom_practise\\notes\\API\\Web-API\\Web-API\\Web-API.csproj",
       "projectName": "Web-API",
       "projectPath": "X:\\Dev\\consom_practise\\notes\\API\\Web-API\\Web-API\\Web-API.csproj",
@@ -3884,6 +3890,20 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Егор\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+      "projectUniqueName": "C:\\Users\\777\\Desktop\\final\\notes\\API\\Web-API\\Web-API\\Web-API.csproj",
+      "projectName": "Web-API",
+      "projectPath": "C:\\Users\\777\\Desktop\\final\\notes\\API\\Web-API\\Web-API\\Web-API.csproj",
+      "packagesPath": "C:\\Users\\777\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\777\\Desktop\\final\\notes\\API\\Web-API\\Web-API\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\777\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+>>>>>>> fe99c5a70d3aec1e8464b5ffa05b3304f07a481c
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3952,7 +3972,11 @@
             "privateAssets": "all"
           }
         },
+<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+=======
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+>>>>>>> fe99c5a70d3aec1e8464b5ffa05b3304f07a481c
       }
     }
   },
@@ -3961,7 +3985,11 @@
       "code": "Undefined",
       "level": "Warning",
       "warningLevel": 1,
+<<<<<<< HEAD
       "message": "Ошибка чтения файла кэша X:\\Dev\\consom_practise\\notes\\API\\Web-API\\Web-API\\obj\\project.nuget.cache: Invalid property identifier character: <. Path 'expectedPackageFiles', line 86, position 0."
+=======
+      "message": "Ошибка чтения файла кэша C:\\Users\\777\\Desktop\\final\\notes\\API\\Web-API\\Web-API\\obj\\project.nuget.cache: Invalid property identifier character: <. Path 'expectedPackageFiles', line 86, position 0."
+>>>>>>> fe99c5a70d3aec1e8464b5ffa05b3304f07a481c
     }
   ]
 }

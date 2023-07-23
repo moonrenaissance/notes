@@ -15,7 +15,7 @@ export class NoteCardComponent implements OnInit{
   @Input('body') body: string;
   @Input('noteId') noteId: string;
 
-  @Output('delete') deleteEvent: EventEmitter<void> = new EventEmitter<void>();
+  @Output('deleteNoteId') deleteEvent: EventEmitter<string> = new EventEmitter<string>();
   @Output('findTag') findTagEvent: EventEmitter<string> = new EventEmitter<string>();
   @Output('remindNote') remindNoteEvent: EventEmitter<string> = new EventEmitter<string>();
 
@@ -54,6 +54,16 @@ export class NoteCardComponent implements OnInit{
           .subscribe({
             next: (tag) =>{
               this.selectedTags.push(tag);
+
+              this.selectedTags.sort((a, b) => {
+                if (a.title < b.title) {
+                  return -1;
+                } else if (a.title > b.title) {
+                  return 1;
+                } else {
+                  return 0;
+                }
+              });
             },
             error: (response)=>{
               console.log(response);
@@ -71,7 +81,7 @@ export class NoteCardComponent implements OnInit{
     this.notesService.deleteNote(id)
     .subscribe({
       next: (response) =>{
-        this.deleteEvent.emit();
+        this.deleteEvent.emit(id);
       }
     })
   }
