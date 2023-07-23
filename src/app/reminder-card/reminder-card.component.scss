@@ -38,7 +38,6 @@
 
             max-height: 80px;
             overflow: hidden;
-            margin-bottom: 10px;
 
             .fade-out-truncation {
                 position: absolute;
@@ -86,6 +85,7 @@
 .reminder-card-tags {
     position: relative;
 
+    margin-top: 10px;
     padding: 16px;
     height: auto;
     display: flex;
@@ -111,11 +111,14 @@
 }
 
 .reminder-card-datetime {
-    position: absolute;
-    
-    bottom: 56px;
-    right: 12px;
+    position: relative;
 
-    margin-bottom: 10px;
-    padding: 25px 25px 0 25px;
+    display: flex;
+    flex-wrap: wrap;
+
+    margin-bottom: 15px;
+    margin-right: 15px;
+
+    float: right;
+    height: auto;
 }
