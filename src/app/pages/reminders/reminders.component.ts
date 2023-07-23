@@ -117,10 +117,15 @@ export class RemindersComponent implements OnInit{
     });
   }
 
-  deleteReminder(reminder: Note){
-    let indexReminder = this.reminders.indexOf(reminder);
-    if(indexReminder != -1){
-      this.reminders.splice(indexReminder, 1);
+  deleteReminder(id: string){
+    let indexNote = this.reminders.findIndex(item => item.id === id);;
+    if(indexNote != -1){
+      this.reminders.splice(indexNote, 1);
+    }
+
+    let indexFilterNote = this.filteredReminders.findIndex(item => item.id === id);;
+    if(indexFilterNote != -1){
+      this.filteredReminders.splice(indexFilterNote, 1);
     }
   }
 
@@ -184,5 +189,14 @@ export class RemindersComponent implements OnInit{
     });
 
     return relevantReminders;
+  }
+
+  findTag(title: string, input: HTMLInputElement){
+    if (input.value !== '') {
+      input.value += ' ';
+    }
+    input.value += title;
+    
+    this.filter(input.value);
   }
 }
