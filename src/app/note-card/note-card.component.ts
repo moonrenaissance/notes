@@ -54,6 +54,16 @@ export class NoteCardComponent implements OnInit{
           .subscribe({
             next: (tag) =>{
               this.selectedTags.push(tag);
+
+              this.selectedTags.sort((a, b) => {
+                if (a.title < b.title) {
+                  return -1;
+                } else if (a.title > b.title) {
+                  return 1;
+                } else {
+                  return 0;
+                }
+              });
             },
             error: (response)=>{
               console.log(response);
