@@ -51,7 +51,8 @@
             <input id="calendar" 
                    type="datetime-local" 
                    value = {{reminderDetails.date}}
-                   (change)="dateCheck()">
+                   (change)="dateCheck()"
+                   min="2000-01-01T01:01">
         </div>
 
         <br>
