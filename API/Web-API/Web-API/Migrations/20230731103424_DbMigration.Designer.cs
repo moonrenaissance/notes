@@ -12,7 +12,7 @@ using Web_API.Data;
 namespace Web_API.Migrations
 {
     [DbContext(typeof(FullStackDbContext))]
-    [Migration("20230722223613_DbMigration")]
+    [Migration("20230731103424_DbMigration")]
     partial class DbMigration
     {
         /// <inheritdoc />
@@ -46,8 +46,8 @@ namespace Web_API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
+                    b.Property<DateTimeOffset>("Date")
+                        .HasColumnType("datetimeoffset");
 
                     b.Property<DateTime>("DateOfCreation")
                         .HasColumnType("datetime2");

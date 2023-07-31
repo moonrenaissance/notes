@@ -30,6 +30,7 @@ export class ReminderDetailsComponent implements OnInit{
 
   tags: Tag[] = [];
   typePage: boolean = false;
+  str: string = "";
 
   ngOnInit(): void {
     this.route.paramMap.subscribe({
@@ -42,7 +43,8 @@ export class ReminderDetailsComponent implements OnInit{
             next:(response) =>{
               this.reminderDetails = response;
               this.isDate = true;
-
+              
+              this.str = new Date(this.reminderDetails.date).toISOString().slice(0,-8);
             }
           });
           this.typePage = true;
